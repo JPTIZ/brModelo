@@ -406,13 +406,7 @@ public class DrawerEditor extends javax.swing.JDialog implements Editor.iParaOut
 
     @Override
     public boolean ProcesseCmdFromInspector(String property) {
-
-        FormaElementar.nomeComandos cmd;
-        try {
-            cmd = FormaElementar.nomeComandos.valueOf(property);
-        } catch (Exception e) {
-            return false;
-        }
+        FormaElementar.nomeComandos cmd = FormaElementar.nomeComandos.valueOf(property);
 
         switch (cmd) {
             case cmdLoadImg:

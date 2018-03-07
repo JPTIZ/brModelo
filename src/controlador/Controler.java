@@ -155,12 +155,18 @@ public class Controler {
 
     public ArrayList<ConfigAcao> Lista = new ArrayList<>();
     public ArrayList<Acao> ListaDeAcoesEditaveis = new ArrayList<>();
+    
+    private void addShortcut(ConfigAcao action) {
+        
+    }
 
     public final void Construir() {
         ResourceBundle resourceMap = Configuer.getResourceMap();
         for (Comandos c : Comandos.values()) {
             String str = "diagrama." + c.toString().substring(3);
-            Lista.add(new ConfigAcao(resourceMap.getString(str), str + ".img", str + ".descricao", c.toString(), TipoConfigAcao.tpAny));
+            ConfigAcao action = new ConfigAcao(resourceMap.getString(str), str + ".img", str + ".descricao", c.toString(), TipoConfigAcao.tpAny);
+            addShortcut(action);
+            Lista.add(action);
         }
         for (menuComandos c : menuComandos.values()) {
             String str = "Controler.comandos." + c.toString().substring(3).toLowerCase();

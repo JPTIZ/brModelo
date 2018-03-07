@@ -1,9 +1,9 @@
 #Config
-#Mon Oct 23 22:03:01 AMST 2017
+#Tue Mar 06 21:56:45 BRT 2018
 cfg.ancorador=true
 cfg.mostrargrade=true
-cfg.location.y=-8
-cfg.location.x=-8
+cfg.location.y=108
+cfg.location.x=65
 cfg.mostrardimensoesaomover=true
 cfg.gradelargura=23
 cfg.mostrartooltips=false

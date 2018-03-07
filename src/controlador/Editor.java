@@ -59,6 +59,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
+import javax.swing.JToggleButton;
 import javax.swing.KeyStroke;
 import principal.Aplicacao;
 import util.CopFormatacao;
@@ -390,9 +391,22 @@ public class Editor extends BaseControlador implements KeyListener {
                         transferFocus();
                     }
                     break;
+                case KeyEvent.VK_E:
+                    JOptionPane.showMessageDialog(this, "TROLLÔ MEU BROTHER");
+                    diagramaAtual.setComando(Controler.Comandos.cmdEntidade);
+                    /**
+                     * TODO:
+                     * - diagramaAtual -> Diagrama
+                     * - DiagramaConceitual -> RealiseComando(Point posi)
+                     * - cmdEntidade
+                     * ^ dar uma olhada
+                     * tem o "comando" que significa o comando clicado atualmente
+                     */
             }
         }
     }
+    
+    public HashMap<String, Acao> penera = new HashMap<>();
 
     @Override
     public void keyReleased(KeyEvent e) {
