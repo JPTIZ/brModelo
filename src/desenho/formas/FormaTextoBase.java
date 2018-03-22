@@ -4,7 +4,7 @@
  */
 package desenho.formas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.linhas.Linha;
 import desenho.linhas.PontoDeLinha;
 import java.awt.Graphics2D;
@@ -18,11 +18,11 @@ public class FormaTextoBase extends Forma {
 
     private static final long serialVersionUID = 5374766439117842226L;
 
-    public FormaTextoBase(Diagrama modelo) {
+    public FormaTextoBase(Diagram modelo) {
         super(modelo);
     }
 
-    public FormaTextoBase(Diagrama modelo, String texto) {
+    public FormaTextoBase(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

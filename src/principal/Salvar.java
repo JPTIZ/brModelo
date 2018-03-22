@@ -33,7 +33,7 @@ import javax.swing.KeyStroke;
 public class Salvar extends javax.swing.JDialog {
 
     /**
-     * Creates new form Salvar
+     * Creates new form save
      *
      * @param parent
      * @param modal

@@ -6,7 +6,7 @@
 
 package principal.cli;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import diagramas.eap.DiagramaEap;
 import diagramas.eap.EapCLI;
@@ -208,7 +208,7 @@ public class FormCli extends javax.swing.JDialog {
         masterCli1.setProcessador(cli);
     }
 
-    public void SetDiagrama(Diagrama diagramaAtual) {
+    public void SetDiagrama(Diagram diagramaAtual) {
         if (diagramaAtual instanceof DiagramaEap) {
             EapCLI tmp = new EapCLI(getMasterCLI());
             setProcessador(tmp);

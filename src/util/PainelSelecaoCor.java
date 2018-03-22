@@ -6,7 +6,7 @@ package util;
 
 import controlador.Configuer;
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.editores.JListItemParaItemLegenda;
 import desenho.formas.Legenda;
 import java.awt.BorderLayout;
@@ -29,7 +29,7 @@ public class PainelSelecaoCor extends AbstractColorChooserPanel {
 
     ArrayList<Legenda.ItemDeLegenda> itens = new ArrayList<>();
 
-    PainelSelecaoCor(Diagrama diagrama) {
+    PainelSelecaoCor(Diagram diagrama) {
         diagrama.getListaDeItens().stream().
                 filter((fe) -> (fe instanceof Legenda && ((Legenda)fe).canShowEditor())).map(fe -> (Legenda)fe).forEach((fe) -> {
                     fe.getItens().forEach((it) -> {

@@ -16,28 +16,28 @@
  */
 package helper;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.apoios.TreeItem;
 import java.util.ArrayList;
-import partepronta.GerenciadorSubParte;
+import partepronta.SubpartManager;
 import util.ItemIntStringToList;
 
 /**
  *
  * @author chcan
  */
-public class ParteAjuda extends GerenciadorSubParte {
+public class ParteAjuda extends SubpartManager {
 
     private static final long serialVersionUID = 23051723180000L;
 
-    public ParteAjuda(String texto, byte[] byteImage, String XMLCopiado, String versaoDiagrama, Diagrama.TipoDeDiagrama tipo) {
+    public ParteAjuda(String texto, byte[] byteImage, String XMLCopiado, String versaoDiagrama, Diagram.TipoDeDiagrama tipo) {
         super(texto, byteImage, XMLCopiado, versaoDiagrama, tipo);
     }
 
     public ParteAjuda(int id, String titulo) {
         super();
         ID = id;
-        setTitulo(titulo);
+        setTitle(titulo);
     }
 
     //<editor-fold defaultstate="collapsed" desc="Propriedades">
@@ -97,9 +97,9 @@ public class ParteAjuda extends GerenciadorSubParte {
     }
 
     @Override
-    public void setTitulo(String titulo) {
-        if (!this.getTitulo().equals(titulo)) {
-            super.setTitulo(titulo);
+    public void setTitle(String titulo) {
+        if (!this.getTitle().equals(titulo)) {
+            super.setTitle(titulo);
             doMuda();
         }
     }
@@ -140,8 +140,8 @@ public class ParteAjuda extends GerenciadorSubParte {
         return nw;
     }
 
-    public void InitParteAjuda(byte[] byteImage, String XMLCopiado, String versaoDiagrama, Diagrama.TipoDeDiagrama tipo) {
-        InitGerenciadorSubParte(getTitulo(), byteImage, XMLCopiado, versaoDiagrama, tipo);
+    public void InitParteAjuda(byte[] byteImage, String XMLCopiado, String versaoDiagrama, Diagram.TipoDeDiagrama tipo) {
+        InitGerenciadorSubParte(getTitle(), byteImage, XMLCopiado, versaoDiagrama, tipo);
         doMuda();
     }
 
@@ -159,7 +159,7 @@ public class ParteAjuda extends GerenciadorSubParte {
     }
 
     public void PopuleTree(TreeItem tree) {
-        final TreeItem sub = new TreeItem(getTitulo(), getID(), "");
+        final TreeItem sub = new TreeItem(getTitle(), getID(), "");
         tree.add(sub);
         getSubs().stream().forEach((it) -> {
             it.PopuleTree(sub);
@@ -174,7 +174,7 @@ public class ParteAjuda extends GerenciadorSubParte {
 
     public void ProcurarPorTexto(String tex, ArrayList<ParteAjuda> encontrados) {
         String tmp = tex.toUpperCase();
-        if (getTitulo().toUpperCase().contains(tmp)) {
+        if (getTitle().toUpperCase().contains(tmp)) {
             encontrados.add(this);
         } else if (getHtml().toUpperCase().contains(tmp)) {
             encontrados.add(this);
@@ -193,7 +193,7 @@ public class ParteAjuda extends GerenciadorSubParte {
 //        });
 //    }
     public void PopuleTopicos(ArrayList<ItemIntStringToList> topicos) {
-        topicos.add(new ItemIntStringToList(ID, getTitulo(), this));
+        topicos.add(new ItemIntStringToList(ID, getTitle(), this));
         getSubs().stream().forEach((it) -> {
             it.PopuleTopicos(topicos);
         });

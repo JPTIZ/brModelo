@@ -4,7 +4,7 @@
  */
 package diagramas.conceitual;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.Elementar;
 import desenho.FormaElementar;
@@ -30,15 +30,15 @@ public class Ligacao extends PreLigacao {
 
     private static final long serialVersionUID = -8105972246347830149L;
 
-    public Ligacao(Diagrama modelo) {
+    public Ligacao(Diagram modelo) {
         super(modelo);
     }
 
-//    public Ligacao(Diagrama modelo, boolean cardNome) {
+//    public Ligacao(Diagram modelo, boolean cardNome) {
 //        super(modelo, cardNome);
 //    }
 
-    public Ligacao(Diagrama modelo, Cardinalidade aCard) {
+    public Ligacao(Diagram modelo, Cardinalidade aCard) {
         super(modelo, aCard);
     }
 

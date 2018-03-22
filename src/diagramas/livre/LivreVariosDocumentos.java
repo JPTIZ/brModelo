@@ -6,7 +6,7 @@
 
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 
 /**
  *
@@ -16,12 +16,12 @@ public class LivreVariosDocumentos extends LivreBase {
 
     private static final long serialVersionUID = 1699623308177437273L;
 
-    public LivreVariosDocumentos(Diagrama modelo, String texto) {
+    public LivreVariosDocumentos(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipoDesenho(LivreBase.TipoDraw.tpVariosDocumentos);
     }
 
-    public LivreVariosDocumentos(Diagrama modelo) {
+    public LivreVariosDocumentos(Diagram modelo) {
         super(modelo);
         setTipoDesenho(LivreBase.TipoDraw.tpVariosDocumentos);
     }

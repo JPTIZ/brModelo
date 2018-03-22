@@ -82,29 +82,29 @@ import util.XMLGenerate;
  *
  * @author Rick
  */
-public class Diagrama implements Serializable, ClipboardOwner {
+public class Diagram implements Serializable, ClipboardOwner {
 
     private static final long serialVersionUID = 21212121212121L;
 
     /**
      * Classes existentes.
      */
-    private final Class[] classesDoDiagrama = new Class[]{};
+    private final Class[] diagramClasses = new Class[]{};
 
     public Class[] getCassesDoDiagrama() {
-        return classesDoDiagrama;
+        return diagramClasses;
     }
     // <editor-fold defaultstate="collapsed" desc="Campos">
     protected transient Editor master;
     private int baseRecuo = 3;
-    private boolean draging = false;
+    private boolean dragging = false;
     protected Color pontoCor = Color.BLACK;
     protected Color pontoCorMultSel = Color.GREEN;
     protected FormaElementar infoDiagrama = null;
     protected final String versaoA = "3";
     protected final String versaoB = "0";
     protected final String versaoC = "0";
-    private TipoDeDiagrama tipo = TipoDeDiagrama.tpConceitual;
+    private TipoDeDiagrama tipo = TipoDeDiagrama.CONCEITUAL;
     transient private String nome;
     transient private String Arquivo = "";
     //mostra uma grade no modelo.
@@ -173,7 +173,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
         return width;
     }
     /**
-     * Ao verificar-se o total de itens em um Diagrama, para saber se algum foi incluído, é preciso exluir do total aqueles que fazem parte do próprio objto. Até então apenas o InfoDiagrama.
+     * Ao verificar-se o total de itens em um Diagram, para saber se algum foi incluído, é preciso exluir do total aqueles que fazem parte do próprio objto. Até então apenas o InfoDiagrama.
      */
     public static final int totalInicialDeItens = 1;
 
@@ -209,7 +209,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
 
     public String getTipoDeDiagramaFormatado() {
-//        if (getTipo() == TipoDeDiagrama.tpConceitual || getTipo() == TipoDeDiagrama.tpFisico || getTipo() == TipoDeDiagrama.tpLogico) {
+//        if (getTipo() == TipoDeDiagrama.CONCEITUAL || getTipo() == TipoDeDiagrama.tpFisico || getTipo() == TipoDeDiagrama.LOGICO) {
 //            return Editor.fromConfiguracao.getValor("Inspector.obj.modelo.tipo") +  " " + Editor.fromConfiguracao.getValor("Inspector.lst.tipomodelo." + getTipo().name().substring(2).toLowerCase());
 //        }
         return Editor.fromConfiguracao.getValor("Inspector.lst.tipodiagrama." + getTipo().name().substring(2).toLowerCase());
@@ -284,7 +284,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
     // </editor-fold>
 
-    public Diagrama(Editor omaster) {
+    public Diagram(Editor omaster) {
         super();
         master = omaster;
         font = Elementar.CloneFont(this.master.getBox().getFont());
@@ -479,7 +479,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
 
     /**
-     * Quando InfoDigrama roda o DoAnyThing() ela chama este método no Diagrama,
+     * Quando InfoDigrama roda o DoAnyThing() ela chama este método no Diagram,
      *
      * @param Tag - vem do DoAnyThing do InfoDiagrama
      */
@@ -532,18 +532,18 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
 
     /**
-     * Rodado após o carregamento do diagrama a aprtir de um arquivo. será ultil no futuro para setar propriedades default em novas versões dos diagramas a partir das versões do brMOdelo. roda dentro do método: ProcessePosOpen(Diagrama res) na classe Editor
+     * Rodado após o carregamento do diagrama a aprtir de um arquivo. será ultil no futuro para setar propriedades default em novas versões dos diagramas a partir das versões do brMOdelo. roda dentro do método: ProcessePosOpen(Diagram res) na classe Editor
      */
     public void OnAfterLoad() {
 
     }
 
     public enum TipoDeDiagrama {
-        tpConceitual, tpLogico, tpFluxo, tpAtividade, tpEap, tpLivre
+        CONCEITUAL, LOGICO, FLUXO, ATIVIDADE, EAP, LIVRE
     }
 
     public boolean isAlterado() {
-        return (this.getListaDeItens().size() > Diagrama.totalInicialDeItens
+        return (this.getListaDeItens().size() > Diagram.totalInicialDeItens
                 || this.getMudou() || !("".equals(this.getArquivo())));
     }
 
@@ -718,7 +718,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
 
         if (elementarSobMouse != null) {
             elementarSobMouse.mousePressed(e);
-            draging = true;
+            dragging = true;
             if (elementarSobMouse != superAncorador) {
                 superAncorador.SetVisible(false); //não precisa repintar!
             }
@@ -752,7 +752,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     public void mouseDragged(MouseEvent e) {
         e = tradutorZoom(e);
 
-        if (draging && (elementarSobMouse != null)) {
+        if (dragging && (elementarSobMouse != null)) {
             elementarSobMouse.mouseDragged(e);
             return;
         }
@@ -815,7 +815,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
 
     public void mouseMoved(MouseEvent e) {
-        if (isMouseDown || draging) {
+        if (isMouseDown || dragging) {
             mouseReleased(e);
             return;
         }
@@ -850,7 +850,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
 
     /**
-     * Colore uma borda na Forma que estiver sobre o Mouse no momento em que estiver selecionado um novo objeto a ser inserido no Diagrama.
+     * Colore uma borda na Forma que estiver sobre o Mouse no momento em que estiver selecionado um novo objeto a ser inserido no Diagram.
      *
      * @param limpa apagar.
      * @param el elementar um cujo o mouse está ou estava sobre .
@@ -971,11 +971,11 @@ public class Diagrama implements Serializable, ClipboardOwner {
             //tmp.Posicione(getSelecionado());
             repaint(Utilidades.Grow(recsel, 2, 2, 0));
         }
-        if (draging && (elementarSobMouse != null)) {
+        if (dragging && (elementarSobMouse != null)) {
             elementarSobMouse.mouseReleased(e);
             superAncorador.Posicione(getSelecionado());
         }
-        draging = false;
+        dragging = false;
     }
 
     public void mouseWheelMoved(MouseWheelEvent e) {
@@ -1417,7 +1417,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
 
     /**
-     * Adiciona um componente ao Diagrama.
+     * Adiciona um componente ao Diagram.
      *
      * @param aThis
      */
@@ -1725,7 +1725,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             }
 
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            util.BrLogger.Logger("ERROR_SET_PROPERTY", e.getMessage());
+            util.Logger.log("ERROR_SET_PROPERTY", e.getMessage());
             IsStopEvents = false;
             superAncorador.InvalidateArea();
             return false;
@@ -1806,7 +1806,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             DoMuda(param);
 
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            util.BrLogger.Logger("ERROR_SET_PROPERTY", e.getMessage());
+            util.Logger.log("ERROR_SET_PROPERTY", e.getMessage());
             return false;
         }
         return true;
@@ -1856,7 +1856,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
         try {
             master.DoDiagramaMuda();
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_MUDA", e.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_MUDA", e.getMessage());
         }
 //        if (who != null && TemSelecionado()) {
 //            if (who != itensSelecionados.get(0)) return;
@@ -1871,7 +1871,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
      * @param othis
      * @return
      */
-    public synchronized static ByteArrayOutputStream SaveToStream(Diagrama othis) {
+    public synchronized static ByteArrayOutputStream SaveToStream(Diagram othis) {
         try {
             ByteArrayOutputStream ba = new ByteArrayOutputStream();
             try (ObjectOutput out = new ObjectOutputStream(ba)) {
@@ -1880,7 +1880,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             othis.tick();
             return ba;
         } catch (IOException iOException) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_SAVELOAD_STREAM", iOException.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_SAVELOAD_STREAM", iOException.getMessage());
             return null;
         }
     }
@@ -1893,7 +1893,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             String tp = prin.getAttribute("TIPO");
             return TipoDeDiagrama.valueOf(tp);
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_TIPO_XML", e.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_LOAD_TIPO_XML", e.getMessage());
             return null;
         }
     }
@@ -1904,16 +1904,16 @@ public class Diagrama implements Serializable, ClipboardOwner {
      * @param ba
      * @return
      */
-    public synchronized static Diagrama LoadFromStream(ByteArrayOutputStream ba) {
+    public synchronized static Diagram LoadFromStream(ByteArrayOutputStream ba) {
         try {
             byte[] bytes = ba.toByteArray();
             ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bytes));
             //in = new ObjectInputStream(new ByteArrayInputStream(bytes));
-            Diagrama res = (Diagrama) in.readObject();
+            Diagram res = (Diagram) in.readObject();
             in.close();
             return res;
         } catch (ClassNotFoundException | IOException e) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD", e.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_LOAD", e.getMessage());
             return null;
         }
     }
@@ -1925,11 +1925,11 @@ public class Diagrama implements Serializable, ClipboardOwner {
      * @param master
      * @return
      */
-    public synchronized static Diagrama LoadFromFile(File arq, Editor master) {
+    public synchronized static Diagram LoadFromFile(File arq, Editor master) {
         if (arq == null || master.IsOpen(arq)) {
             return null;
         }
-        Diagrama res = null;
+        Diagram res = null;
 
         String onome = arq.getName();
         if (util.Arquivo.IsbrM3(arq)) {
@@ -1954,7 +1954,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
                 res.SetNome(onome);
                 return res;
             } catch (NullPointerException | IOException | ClassNotFoundException iOException) {
-                util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_FILE_BRM", iOException.getMessage());
+                util.Logger.log("ERROR_DIAGRAMA_LOAD_FILE_BRM", iOException.getMessage());
                 return null;
             }
         } else {
@@ -1965,7 +1965,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             TipoDeDiagrama tp = GetTipoOnXml(doc);
             res = master.Novo(tp);
             if (!res.LoadFromXML(doc, false)) {
-                util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_FILE_XML", "[IS BRM XML?]");
+                util.Logger.log("ERROR_DIAGRAMA_LOAD_FILE_XML", "[IS BRM XML?]");
             }
             //Recria o UID para se ter a certeza de que ele é único, não repetido por uma eventual cópaia do arquivo.
             res.ReGeraUniversalUnicID();
@@ -1983,11 +1983,11 @@ public class Diagrama implements Serializable, ClipboardOwner {
      * @param master
      * @return
      */
-    public synchronized static Diagrama LoadFromBrm(GuardaPadraoBrM seguranca, Editor master) {
+    public synchronized static Diagram LoadFromBrm(GuardaPadraoBrM seguranca, Editor master) {
         if (seguranca == null) {
             return null;
         }
-        Diagrama res = seguranca.getDiagrama();
+        Diagram res = seguranca.getDiagrama();
         res.setMaster(master);
         //Recria o UID para se ter a certeza de que ele é único, não repetido por uma eventual cópaia do arquivo.
         res.ReGeraUniversalUnicID();
@@ -2017,7 +2017,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             }
             //</editor-fold>
 
-            NodeList nodeLst = doc.getElementsByTagName(Diagrama.nodePrincipal);
+            NodeList nodeLst = doc.getElementsByTagName(Diagram.nodePrincipal);
             Node mer = nodeLst.item(0);
             nodeLst = mer.getChildNodes();
 
@@ -2036,7 +2036,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
                     Element fstElmnt = (Element) fstNode;
                     FormaElementar res = runCriadorFromXml(fstElmnt, colando);
                     if (res == null) {
-                        util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD", "Lixo ou objeto alienígena encontrado: " + fstElmnt.toString() + " - não é possível colar este objeto", "[]");
+                        util.Logger.log("ERROR_DIAGRAMA_LOAD", "Lixo ou objeto alienígena encontrado: " + fstElmnt.toString() + " - não é possível colar este objeto", "[]");
                         continue;
                     }
                     tl++;
@@ -2069,7 +2069,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             PerformInspector();
 
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD", e.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_LOAD", e.getMessage());
             this.isLoadCreate = false;
             this.isCarregando = false;
             return false;
@@ -2098,7 +2098,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
 
     protected FormaElementar ReflectionObj(Class classeDoObj) {
-        Class[] argsConstr = new Class[]{Diagrama.class};
+        Class[] argsConstr = new Class[]{Diagram.class};
         Object[] omodelo = new Object[]{this};
         Constructor construtor;
         FormaElementar res;
@@ -2108,10 +2108,10 @@ public class Diagrama implements Serializable, ClipboardOwner {
                 res = (FormaElementar) construtor.newInstance(omodelo);
                 return res;
             } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-                util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_REFLECTION_CREATE_OBJ", e.getMessage());
+                util.Logger.log("ERROR_DIAGRAMA_LOAD_REFLECTION_CREATE_OBJ", e.getMessage());
             }
         } catch (NoSuchMethodException e) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_REFLECTION_CONSTRUCTOR", e.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_LOAD_REFLECTION_CONSTRUCTOR", e.getMessage());
         }
         return null;
     }
@@ -2121,7 +2121,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
 
         if (classe == InfoDiagrama.class.getSimpleName().hashCode()) {
             if (!colando) {
-                LoadFromXML(this.infoDiagrama, xml, false);
+                loadFromXML(this.infoDiagrama, xml, false);
             }
             return this.infoDiagrama;
         }
@@ -2132,7 +2132,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             if (cl.getSimpleName().hashCode() == classe) {
                 FormaElementar res = ReflectionObj(cl);
                 if (res != null) {
-                    LoadFromXML(res, xml, colando);
+                    loadFromXML(res, xml, colando);
                 }
                 return res;
             }
@@ -2140,35 +2140,35 @@ public class Diagrama implements Serializable, ClipboardOwner {
         return null;
     }
 
-    protected void LoadFromXML(FormaElementar obj, Element xml, boolean colando) {
+    protected void loadFromXML(FormaElementar obj, Element xml, boolean colando) {
         try {
             obj.LoadFromXML(xml, colando);
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_OBJECT_LOAD", Integer.toString(obj.getID()) + " - " + obj.getClass().getSimpleName(), e.getMessage());
+            util.Logger.log("ERROR_OBJECT_LOAD", Integer.toString(obj.getID()) + " - " + obj.getClass().getSimpleName(), e.getMessage());
         }
     }
 
-    public static String SaveToXml(Diagrama othis, boolean justSel) {
+    public static String saveToXml(Diagram othis, boolean justSel) {
         return XMLGenerate.GeraXMLFrom(othis, justSel);
     }
 
-    public boolean Salvar() {
+    public boolean save() {
         File arq = util.Dialogos.ShowDlgSaveDiagrama(master.getRootPane(), this);
         if (arq == null) {
             return false;
         }
-        return Salvar(arq, true);
+        return save(arq, true);
     }
 
-    public boolean Salvar(String fileName) {
+    public boolean save(String fileName) {
         if ("".equals(fileName) || fileName == null) {
-            return Salvar();
+            return save();
         }
         File arq = new File(fileName);
-        return Salvar(arq, false);
+        return save(arq, false);
     }
 
-    public boolean Salvar(File fileName, boolean pergunta) {
+    public boolean save(File fileName, boolean pergunta) {
         if (fileName.exists() && pergunta) {
             if (util.Dialogos.ShowMessageConfirm(master.getRootPane(), Editor.fromConfiguracao.getValor("Controler.MSG_QUESTION_REWRITE")) != JOptionPane.YES_OPTION) {
                 return false;
@@ -2200,7 +2200,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
                 master.DoAutoSaveCompleto();
                 return true;
             } catch (IOException iOException) {
-                util.BrLogger.Logger("ERROR_DIAGRAMA_SAVE_BRM", iOException.getMessage());
+                util.Logger.log("ERROR_DIAGRAMA_SAVE_BRM", iOException.getMessage());
                 setNome(txt);
                 return false;
             }
@@ -2217,14 +2217,14 @@ public class Diagrama implements Serializable, ClipboardOwner {
                     return true;
                 }
             } catch (IOException iOException) {
-                util.BrLogger.Logger("ERROR_DIAGRAMA_SAVE_XML", iOException.getMessage());
+                util.Logger.log("ERROR_DIAGRAMA_SAVE_XML", iOException.getMessage());
                 setNome(txt);
                 return false;
             }
         }
     }
 
-    public boolean AutoSalvar(ArrayList<byte[]> as) {
+    public boolean autosave(ArrayList<byte[]> as) {
         try {
             ByteArrayOutputStream fo = new ByteArrayOutputStream();
             try (ObjectOutput out = new ObjectOutputStream(fo)) {
@@ -2235,7 +2235,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             as.add(fo.toByteArray());
             return true;
         } catch (IOException iOException) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_AUTOSAVE_MEM", iOException.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_AUTOSAVE_MEM", iOException.getMessage());
             return false;
         }
     }
@@ -2247,7 +2247,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
     }
 
     public void doCopy() {
-        String res = Diagrama.SaveToXml(this, true);
+        String res = Diagram.saveToXml(this, true);
         StringSelection vai = new StringSelection(res);
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(vai, this);
@@ -2377,7 +2377,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             try {
                 result = (String) contents.getTransferData(DataFlavor.stringFlavor);
             } catch (UnsupportedFlavorException | IOException ex) {
-                util.BrLogger.Logger("ERROR_DIAGRAMA_CLIPBOARD", ex.getMessage());
+                util.Logger.log("ERROR_DIAGRAMA_CLIPBOARD", ex.getMessage());
             }
         }
         return result;
@@ -2394,7 +2394,7 @@ public class Diagrama implements Serializable, ClipboardOwner {
             try {
                 result = (BufferedImage) contents.getTransferData(DataFlavor.imageFlavor);
             } catch (UnsupportedFlavorException | IOException ex) {
-                util.BrLogger.Logger("ERROR_DIAGRAMA_CLIPBOARD", ex.getMessage());
+                util.Logger.log("ERROR_DIAGRAMA_CLIPBOARD", ex.getMessage());
             }
         }
         return result;
@@ -2403,32 +2403,32 @@ public class Diagrama implements Serializable, ClipboardOwner {
     @Override
     public String toString() {
         return super.toString() + "{"
-                + Diagrama.SaveToXml(this, false) + "}";
+                + Diagram.saveToXml(this, false) + "}";
     }
 
-    public static Diagrama Factory(TipoDeDiagrama otipo, Editor ed) {
-        Diagrama res = null;
+    public static Diagram Factory(TipoDeDiagrama otipo, Editor ed) {
+        Diagram res = null;
         switch (otipo) {
-            case tpConceitual:
+            case CONCEITUAL:
                 res = new diagramas.conceitual.DiagramaConceitual(ed);
                 break;
-            case tpLogico:
+            case LOGICO:
                 res = new diagramas.logico.DiagramaLogico(ed);
                 break;
-            case tpFluxo:
+            case FLUXO:
                 res = new diagramas.fluxo.DiagramaFluxo(ed);
                 break;
-            case tpAtividade:
+            case ATIVIDADE:
                 res = new diagramas.atividade.DiagramaAtividade(ed);
                 break;
-            case tpEap:
+            case EAP:
                 res = new diagramas.eap.DiagramaEap(ed);
                 break;
-            case tpLivre:
+            case LIVRE:
                 res = new diagramas.livre.DiagramaLivre(ed);
                 break;
             default:
-                res = new Diagrama(ed);
+                res = new Diagram(ed);
                 break;
         }
         ed.NomeieDiagrama(res);
@@ -2442,10 +2442,10 @@ public class Diagrama implements Serializable, ClipboardOwner {
             comm = command;
         }
 
-        private Diagrama d = null;
+        private Diagram d = null;
         private String comm = "";
 
-        public AcaoDiagrama(Diagrama diag, String texto, String ico, String descricao, String command) {
+        public AcaoDiagrama(Diagram diag, String texto, String ico, String descricao, String command) {
             this(diag.getEditor(), texto, ico, descricao, command);
             d = diag;
             comm = command;

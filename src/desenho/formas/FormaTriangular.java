@@ -4,7 +4,7 @@
  */
 package desenho.formas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -22,13 +22,13 @@ public class FormaTriangular extends FormaNaoRetangularBase {
 
     private static final long serialVersionUID = -582124975126214085L;
 
-    public FormaTriangular(Diagrama modelo) {
+    public FormaTriangular(Diagram modelo) {
         super(modelo);
         setTipo(TipoDePontos.tp3Pontos);
         setDirecao(Direcao.Up);
     }
 
-    public FormaTriangular(Diagrama modelo, String texto) {
+    public FormaTriangular(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipo(TipoDePontos.tp3Pontos);
         setDirecao(Direcao.Up);

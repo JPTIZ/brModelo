@@ -6,7 +6,7 @@
 package diagramas.eap;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.Elementar;
@@ -26,13 +26,13 @@ import principal.cli.FormCli;
  *
  * @author ccandido
  */
-public class DiagramaEap extends Diagrama {
+public class DiagramaEap extends Diagram {
 
     private static final long serialVersionUID = -2209832873627630709L;
 
     public DiagramaEap(Editor omaster) {
         super(omaster);
-        setTipo(TipoDeDiagrama.tpEap);
+        setTipo(TipoDeDiagrama.EAP);
 
         meusComandos.add(Controler.Comandos.cmdEapProcesso.name());
         meusComandos.add(Controler.Comandos.cmdEapBarraLigacao.name());
@@ -157,7 +157,7 @@ public class DiagramaEap extends Diagrama {
         menu.removeAll();
         menu.setEnabled(true);
         String tmp = Editor.fromConfiguracao.getValor("Controler.interface.Diagrama.Command.Eap.Cli.descricao");
-        Diagrama.AcaoDiagrama ac = new Diagrama.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Eap.Cli.img", tmp, COMM_CLI);
+        Diagram.AcaoDiagrama ac = new Diagram.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Eap.Cli.img", tmp, COMM_CLI);
         ac.normal = false;
         JMenuItem mi = new JMenuItem(ac);
         mi.setName(tmp);
@@ -166,8 +166,8 @@ public class DiagramaEap extends Diagrama {
 
     @Override
     public void rodaComando(String comm) {
-        FormCli fm = new FormCli((Frame) getEditor().getFramePrincipal(), false);
-        fm.setLocationRelativeTo((Frame) getEditor().getFramePrincipal());
+        FormCli fm = new FormCli((Frame) getEditor().getMainWindow(), false);
+        fm.setLocationRelativeTo((Frame) getEditor().getMainWindow());
         fm.SetDiagrama(this);
         fm.setVisible(true);
     }

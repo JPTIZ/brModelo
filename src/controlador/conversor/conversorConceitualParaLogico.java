@@ -45,7 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
-import util.BrLogger;
+import util.Logger;
 
 /**
  *
@@ -155,7 +155,7 @@ public class conversorConceitualParaLogico {
 
             List<FormaElementar> tmp = Links.getLigadosOrigem(E);
             if (tmp.isEmpty() || tmp.size() > 1) {
-                BrLogger.Logger("MSG_CONVERT_ERROR", "QTD TBL " + String.valueOf(tmp.size()));
+                Logger.log("MSG_CONVERT_ERROR", "QTD TBL " + String.valueOf(tmp.size()));
                 Opcoes.Erros.add("MSG_CONVERT_ERROR: " + "QTD TBL " + String.valueOf(tmp.size()));
                 return false;
             }
@@ -164,7 +164,7 @@ public class conversorConceitualParaLogico {
 
             /* Precaussão. Nunca deverá acontecer! */
             if (tbl == null) {
-                BrLogger.Logger("MSG_CONVERT_ERROR", "QTD TBL 0");
+                Logger.log("MSG_CONVERT_ERROR", "QTD TBL 0");
                 Opcoes.Erros.add("MSG_CONVERT_ERROR: " + "QTD TBL 0");
                 return false;
             }
@@ -382,9 +382,9 @@ public class conversorConceitualParaLogico {
             Opcoes.OPC = Opcoes.opcDefault;
             return true;
         }
-        conversorDialogo fm = new conversorDialogo((Frame) origem.getEditor().getFramePrincipal(), true);
+        conversorDialogo fm = new conversorDialogo((Frame) origem.getEditor().getMainWindow(), true);
         if (Opcoes.LastPosi == null) {
-            fm.setLocationRelativeTo((Frame) origem.getEditor().getFramePrincipal());
+            fm.setLocationRelativeTo((Frame) origem.getEditor().getMainWindow());
         } else {
             fm.setLocation(Opcoes.LastPosi);
         }

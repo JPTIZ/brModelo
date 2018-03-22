@@ -5,7 +5,7 @@
 package diagramas.livre;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.FormaTriangular;
@@ -28,13 +28,13 @@ public class LivreTriangulo extends FormaTriangular {
 
     private static final long serialVersionUID = 1879344171165195360L;
 
-    public LivreTriangulo(Diagrama modelo) {
+    public LivreTriangulo(Diagram modelo) {
         super(modelo);
         setDirecaoNaoNotifique(Direcao.Right);
         editFonte = false; 
     }
 
-    public LivreTriangulo(Diagrama modelo, String texto) {
+    public LivreTriangulo(Diagram modelo, String texto) {
         super(modelo, texto);
         setDirecaoNaoNotifique(Direcao.Right);
         editFonte = false; 

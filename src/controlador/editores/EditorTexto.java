@@ -225,7 +225,7 @@ public class EditorTexto extends javax.swing.JDialog implements ClipboardOwner {
             FileWriter fw = new FileWriter(arq.getAbsoluteFile(), true);
             TextArea.write(fw);
         } catch (IOException iOException) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_SAVE_ANY", iOException.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_SAVE_ANY", iOException.getMessage());
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

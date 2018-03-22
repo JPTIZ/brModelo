@@ -5,7 +5,7 @@
  */
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.preAnyDiagrama.PreLigacaoSetaComApenso;
 import desenho.preAnyDiagrama.PreTextoApenso;
 import java.awt.Dimension;
@@ -21,7 +21,7 @@ public class LivreLigacao extends PreLigacaoSetaComApenso {
 
     private static final long serialVersionUID = 3699704445132677421L;
 
-    public LivreLigacao(Diagrama diagrama) {
+    public LivreLigacao(Diagram diagrama) {
         super(diagrama);
     }
 

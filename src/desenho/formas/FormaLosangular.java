@@ -4,7 +4,7 @@
  */
 package desenho.formas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.linhas.PontoDeLinha;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -22,13 +22,13 @@ public class FormaLosangular extends FormaNaoRetangularBase {
 
     private static final long serialVersionUID = 8855549220259709835L;
 
-    public FormaLosangular(Diagrama modelo) {
+    public FormaLosangular(Diagram modelo) {
         super(modelo);
         setTipo(TipoDePontos.tp4Pontos);
 
     }
 
-    public FormaLosangular(Diagrama modelo, String texto) {
+    public FormaLosangular(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipo(TipoDePontos.tp4Pontos);
     }

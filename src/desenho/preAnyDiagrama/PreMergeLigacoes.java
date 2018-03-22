@@ -6,7 +6,7 @@
 
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.FormaNaoRetangularDisformeBase;
 import desenho.linhas.PontoDeLinha;
 
@@ -18,11 +18,11 @@ public class PreMergeLigacoes extends FormaNaoRetangularDisformeBase{
 
     private static final long serialVersionUID = -1543607393468216991L;
 
-    public PreMergeLigacoes(Diagrama modelo, String texto) {
+    public PreMergeLigacoes(Diagram modelo, String texto) {
         super(modelo, texto);
     }
     
-    public PreMergeLigacoes(Diagrama modelo) {
+    public PreMergeLigacoes(Diagram modelo) {
         super(modelo);
     }
 

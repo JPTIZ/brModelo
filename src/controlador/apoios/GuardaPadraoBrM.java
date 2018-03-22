@@ -4,7 +4,7 @@
  */
 package controlador.apoios;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.io.*;
 
 /**
@@ -13,9 +13,9 @@ import java.io.*;
  */
 public class GuardaPadraoBrM implements Serializable {
 
-    public GuardaPadraoBrM(Diagrama dg) {
+    public GuardaPadraoBrM(Diagram dg) {
         super();
-        diagrama = toByteArray(Diagrama.SaveToStream(dg));
+        diagrama = toByteArray(Diagram.SaveToStream(dg));
     }
 
     public GuardaPadraoBrM(byte[] dg) {
@@ -32,14 +32,14 @@ public class GuardaPadraoBrM implements Serializable {
     public String Tag = "";
     private byte[] diagrama;
 
-    public Diagrama getDiagrama() {
-        Diagrama res = null;
+    public Diagram getDiagrama() {
+        Diagram res = null;
         try {
             try (ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(diagrama))) {
-                res = (Diagrama) in.readObject();
+                res = (Diagram) in.readObject();
             }
         } catch (ClassNotFoundException | IOException e) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_PADRAO", e.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_LOAD_PADRAO", e.getMessage());
             return null;
         }
         return res;

@@ -6,7 +6,7 @@
 
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 
 /**
  *
@@ -16,12 +16,12 @@ public class LivreLosango extends LivreBase {
 
     private static final long serialVersionUID = 531349171884606537L;
 
-    public LivreLosango(Diagrama modelo, String texto) {
+    public LivreLosango(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipoDesenho(LivreBase.TipoDraw.tpLosango);
     }
 
-    public LivreLosango(Diagrama modelo) {
+    public LivreLosango(Diagram modelo) {
         super(modelo);
         setTipoDesenho(LivreBase.TipoDraw.tpLosango);
     }

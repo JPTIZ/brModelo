@@ -5,7 +5,7 @@
 package diagramas.fluxo;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import desenho.Elementar;
 import desenho.FormaElementar;
@@ -25,13 +25,13 @@ import java.util.ArrayList;
  *
  * @author ccandido
  */
-public class DiagramaFluxo extends Diagrama {
+public class DiagramaFluxo extends Diagram {
 
     private static final long serialVersionUID = 8966014390922983766L;
 
     public DiagramaFluxo(Editor omaster) {
         super(omaster);
-        setTipo(TipoDeDiagrama.tpFluxo);
+        setTipo(TipoDeDiagrama.FLUXO);
         
         meusComandos.add(Controler.Comandos.cmdFluxIniFim.name());
         meusComandos.add(Controler.Comandos.cmdFluxProcesso.name());

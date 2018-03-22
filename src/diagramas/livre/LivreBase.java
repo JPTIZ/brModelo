@@ -5,7 +5,7 @@
 package diagramas.livre;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.FormaNaoRetangularDisformeBase;
@@ -37,11 +37,11 @@ public class LivreBase extends FormaNaoRetangularDisformeBase {
 
     private static final long serialVersionUID = 634717196393984568L;
 
-    public LivreBase(Diagrama modelo, String texto) {
+    public LivreBase(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 
-    public LivreBase(Diagrama modelo) {
+    public LivreBase(Diagram modelo) {
         super(modelo);
     }
 

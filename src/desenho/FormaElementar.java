@@ -5,7 +5,7 @@
 package desenho;
 
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.Forma;
 import java.awt.Color;
@@ -43,19 +43,19 @@ public class FormaElementar extends Elementar {
         ancorasCode.add(Ancorador.CODE_DEL);
     }
 
-    public FormaElementar(Diagrama master) {
+    public FormaElementar(Diagram master) {
         ID = master.getElementarID();
         ancorasCode.add(Ancorador.CODE_ANCORAR);
         ancorasCode.add(Ancorador.CODE_DEL);
         InitElementar(master);
     }
 
-    protected void InitializeSubItens(Diagrama criador) {
+    protected void InitializeSubItens(Diagram criador) {
         SetFontAndBackColorFromModelo();
         this.subItens = new ArrayList<>();
     }
 
-    private void InitElementar(Diagrama master) {
+    private void InitElementar(Diagram master) {
         setMaster(master);
         if (getMaster() != null) {
             getMaster().Add(this);
@@ -465,7 +465,7 @@ public class FormaElementar extends Elementar {
     }
 
     /**
-     * Variavel de apoio para salvar em XML a condição de isDisablePainted(). Necessária porque, de outra forma, as cores persistidas seriam apenas a cor configurada para a condição de DisablePainted quando true.
+     * Variavel de apoio para save em XML a condição de isDisablePainted(). Necessária porque, de outra forma, as cores persistidas seriam apenas a cor configurada para a condição de DisablePainted quando true.
      */
     private boolean snDisablePainted = false; 
             

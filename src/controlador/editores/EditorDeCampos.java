@@ -28,7 +28,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
-import principal.Aplicacao;
+import principal.Application;
 
 /**
  *
@@ -186,7 +186,7 @@ public class EditorDeCampos extends javax.swing.JDialog {
     }//GEN-LAST:event_AdicionarActionPerformed
 
     private void AdbtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdbtxtActionPerformed
-        String txt = util.Dialogos.ShowDlgTexto(Aplicacao.fmPrincipal.getRootPane(), "");
+        String txt = util.Dialogos.ShowDlgTexto(Application.mainWindow.getRootPane(), "");
         if (txt.isEmpty()) {
             return;
         }

@@ -5,7 +5,7 @@
  */
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.Elementar;
@@ -30,7 +30,7 @@ public class PreLigacaoSeta extends SuperLinha {
 
     private static final long serialVersionUID = -8546091399978837981L;
 
-    public PreLigacaoSeta(Diagrama diagrama) {
+    public PreLigacaoSeta(Diagram diagrama) {
         super(diagrama);
         setInteligente(true);
         showConfigSeta = true;

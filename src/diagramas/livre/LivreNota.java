@@ -6,7 +6,7 @@
 
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 
 /**
  *
@@ -16,12 +16,12 @@ public class LivreNota extends LivreBase {
 
     private static final long serialVersionUID = -8978661788500185689L;
 
-    public LivreNota(Diagrama modelo, String texto) {
+    public LivreNota(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipoDesenho(LivreBase.TipoDraw.tpNota);
     }
 
-    public LivreNota(Diagrama modelo) {
+    public LivreNota(Diagram modelo) {
         super(modelo);
         setTipoDesenho(LivreBase.TipoDraw.tpNota);
     }

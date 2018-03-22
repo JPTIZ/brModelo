@@ -4,7 +4,7 @@
  */
 package diagramas.logico;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.Elementar;
@@ -32,13 +32,13 @@ public class LogicoLinha extends SuperLinha {
     private static final long serialVersionUID = 250742280172172228L;
 
     // <editor-fold defaultstate="collapsed" desc="Criação">
-    public LogicoLinha(Diagrama modelo) {
+    public LogicoLinha(Diagram modelo) {
         super(modelo);
         setInteligente(true);
         InitLCC();
     }
 
-    public LogicoLinha(Diagrama modelo, boolean comCard) {
+    public LogicoLinha(Diagram modelo, boolean comCard) {
         super(modelo);
         setInteligente(true);
         if (comCard) {

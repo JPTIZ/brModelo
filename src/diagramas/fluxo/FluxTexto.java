@@ -6,7 +6,7 @@
 
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.preAnyDiagrama.PreTextoApenso;
@@ -23,12 +23,12 @@ public class FluxTexto extends PreTextoApenso {
 
     private static final long serialVersionUID = -757285006393666224L;
 
-    public FluxTexto(Diagrama modelo) {
+    public FluxTexto(Diagram modelo) {
         super(modelo);
         setPositivo(true);
     }
 
-    public FluxTexto(Diagrama modelo, String texto) {
+    public FluxTexto(Diagram modelo, String texto) {
         super(modelo, texto);
         setPositivo(true);
     }

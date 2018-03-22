@@ -5,7 +5,7 @@
  */
 package principal.cli;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -368,7 +368,7 @@ public class MasterCli extends JPanel implements KeyListener {
     }
 
     public void doPaste() {
-        String txt = Diagrama.getClipboardContents();
+        String txt = Diagram.getClipboardContents();
         if (txt.isEmpty()) {
             return;
         }

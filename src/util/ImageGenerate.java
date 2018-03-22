@@ -6,7 +6,7 @@
 
 package util;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -55,13 +55,13 @@ public class ImageGenerate {
      * @param diag
      * @return 
      */
-    public static BufferedImage geraImagem(Diagrama diag) {
+    public static BufferedImage geraImagem(Diagram diag) {
         Point p = diag.getPontoExtremo();
         p = new Point(Math.max(p.x, 2), Math.max(p.y, 2));
         return geraImagemForPrn(diag, p.x, p.y);
     }
 
-    public static BufferedImage geraImagemForPrn(Diagrama diag, int wdt, int ht) {
+    public static BufferedImage geraImagemForPrn(Diagram diag, int wdt, int ht) {
         
         BufferedImage res = CriarImagem(wdt, ht);
         Graphics2D g = (Graphics2D)res.getGraphics();
@@ -72,7 +72,7 @@ public class ImageGenerate {
         return res;
     }
 
-    public static BufferedImage geraImagemForPrnSelecao(Diagrama diag, int wdt, int ht) {
+    public static BufferedImage geraImagemForPrnSelecao(Diagram diag, int wdt, int ht) {
         
         BufferedImage res = CriarImagem(wdt, ht);
         Graphics2D g = (Graphics2D)res.getGraphics();
@@ -83,7 +83,7 @@ public class ImageGenerate {
         
         return res;
     }
-//    public static BufferedImage geraImagemForPrn(Diagrama diag, int x, int y, int wdt, int ht) {
+//    public static BufferedImage geraImagemForPrn(Diagram diag, int x, int y, int wdt, int ht) {
 //        
 //        BufferedImage res = CriarImagem(wdt, ht);
 //        Graphics2D g = (Graphics2D)res.getGraphics();

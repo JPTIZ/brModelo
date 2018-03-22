@@ -5,7 +5,7 @@
 package desenho.preAnyDiagrama;
 
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.apoios.TreeItem;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.FormaTextoBase;
@@ -24,12 +24,12 @@ public class PreCardinalidade extends FormaTextoBase {
 
     private static final long serialVersionUID = 7310412510571815118L;
 
-    public PreCardinalidade(Diagrama modelo) {
+    public PreCardinalidade(Diagram modelo) {
         super(modelo);
         AceitaAjusteAutmatico = false;
     }
 
-    public PreCardinalidade(Diagrama modelo, String texto) {
+    public PreCardinalidade(Diagram modelo, String texto) {
         super(modelo, texto);
         AceitaAjusteAutmatico = false;
     }

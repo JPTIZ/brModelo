@@ -4,7 +4,7 @@
  */
 package util;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import java.awt.Color;
 import java.awt.Component;
@@ -27,7 +27,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Dialogos {
 
-    public static int ShowMessageSave(Diagrama afechar) {
+    public static int ShowMessageSave(Diagram afechar) {
         String arq = afechar.getNomeFormatado();
         return (JOptionPane.showConfirmDialog(afechar.getEditor().getParent(), Editor.fromConfiguracao.getValor("Controler.MSG_SAVE") + " " +
                 arq,Editor.fromConfiguracao.getValor("Controler.MSG_SAVE_TITLE"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE)); 
@@ -101,7 +101,7 @@ public class Dialogos {
 
     public static Color c = Color.BLACK;
 
-    public static String ShowDlgCor(JComponent form, String textoCor, Diagrama modelo) {
+    public static String ShowDlgCor(JComponent form, String textoCor, Diagram modelo) {
         try {
             c = Utilidades.StringToColor(textoCor);
         } catch (Exception e) {
@@ -156,9 +156,9 @@ public class Dialogos {
     }
 
     private static String dir = "";
-    public static File ShowDlgSaveDiagrama(JComponent form, Diagrama diag) {
+    public static File ShowDlgSaveDiagrama(JComponent form, Diagram diag) {
         JFileChooser f = new JFileChooser();
-        //f.setDialogTitle(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //f.setDialogTitle(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
         f.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         FileFilter filter = new FileNameExtensionFilter("BrModelo(bin)", Arquivo.brM3);
@@ -173,9 +173,9 @@ public class Dialogos {
         if (!diag.getNome().isEmpty()){ 
             f.setSelectedFile(new File(diag.getNome()));
         }
-        //f.setApproveButtonText(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //f.setApproveButtonText(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
         int returnVal = f.showSaveDialog(form);
-        //int returnVal = f.showDialog(form, Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //int returnVal = f.showDialog(form, Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = f.getSelectedFile();
@@ -197,9 +197,9 @@ public class Dialogos {
         }
     }
 
-    public static File ShowDlgSaveAsImg(JComponent form, Diagrama diag) {
+    public static File ShowDlgSaveAsImg(JComponent form, Diagram diag) {
         JFileChooser f = new JFileChooser();
-        //f.setDialogTitle(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //f.setDialogTitle(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
         f.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         FileFilter filter = new FileNameExtensionFilter("Imagem (png)", Arquivo.png);
@@ -214,9 +214,9 @@ public class Dialogos {
         if (!diag.getNome().isEmpty()){ 
             f.setSelectedFile(new File(diag.getNome()));
         }
-        //f.setApproveButtonText(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //f.setApproveButtonText(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
         int returnVal = f.showSaveDialog(form);
-        //int returnVal = f.showDialog(form, Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //int returnVal = f.showDialog(form, Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = f.getSelectedFile();
@@ -239,7 +239,7 @@ public class Dialogos {
 
     public static File ShowDlgSaveAsAny(JComponent form, String ar) {
         JFileChooser f = new JFileChooser();
-        //f.setDialogTitle(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //f.setDialogTitle(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
         f.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         //FileFilter filter = new FileNameExtensionFilter("Arquivo texto (txt)", Arquivo.png);
@@ -254,9 +254,9 @@ public class Dialogos {
         if (!ar.isEmpty()){ 
             f.setSelectedFile(new File(ar));
         }
-        //f.setApproveButtonText(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //f.setApproveButtonText(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
         int returnVal = f.showSaveDialog(form);
-        //int returnVal = f.showDialog(form, Editor.fromConfiguracao.getValor("Controler.dlg.modelo.salvar"));
+        //int returnVal = f.showDialog(form, Editor.fromConfiguracao.getValor("Controler.dlg.modelo.save"));
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = f.getSelectedFile();
@@ -299,7 +299,7 @@ public class Dialogos {
         }
 
         //f.setApproveButtonText(Editor.fromConfiguracao.getValor("Controler.dlg.modelo.abrir"));
-        int returnVal = f.showOpenDialog((Component) master.getFramePrincipal());
+        int returnVal = f.showOpenDialog((Component) master.getMainWindow());
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = f.getSelectedFile();

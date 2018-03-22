@@ -20,7 +20,7 @@ import controlador.Editor;
 import java.awt.event.KeyEvent;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
-import util.BrLogger;
+import util.Logger;
 
 /**
  *
@@ -68,8 +68,8 @@ public class FormaLogs extends javax.swing.JDialog {
         carga.addColumn(Editor.fromConfiguracao.getValor("Controler.interface.logs.tabela.coluna.exception"));
 
         
-        BrLogger.Logs.stream().forEach(l -> {
-            carga.addRow(new Object[] {carga.getRowCount() + 1, l.Tipo, l.Complemento, l.Valor});
+        Logger.logs.stream().forEach(l -> {
+            carga.addRow(new Object[] {carga.getRowCount() + 1, l.type, l.complement, l.value});
         });
         tbPrincipal.setModel(carga);
         
@@ -169,7 +169,7 @@ public class FormaLogs extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        BrLogger.Clean();
+        Logger.clean();
         this.setVisible(false);
     }//GEN-LAST:event_btnLimparActionPerformed
 

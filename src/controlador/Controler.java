@@ -94,7 +94,7 @@ public class Controler {
             g.dispose();
             cur = kit.createCustomCursor(buffered, new Point(1, 1), key);
         } catch (HeadlessException | IndexOutOfBoundsException e) {
-            util.BrLogger.Logger("Cursor: " + key, e.toString());
+            util.Logger.log("Cursor: " + key, e.toString());
             return new Cursor(Cursor.DEFAULT_CURSOR);
         }
         Cursores.put(key, cur);
@@ -172,7 +172,7 @@ public class Controler {
             String str = "Controler.comandos." + c.toString().substring(3).toLowerCase();
             Lista.add(new ConfigAcao(Editor.fromConfiguracao.getValor(str + ".descricao"), str + ".img", str + ".descricao", c.toString(), TipoConfigAcao.tpMenus));
         }
-        for (Diagrama.TipoDeDiagrama tm : Diagrama.TipoDeDiagrama.values()) {
+        for (Diagram.TipoDeDiagrama tm : Diagram.TipoDeDiagrama.values()) {
             ImagemDeDiagrama.put(tm.name(), TratadorDeImagens.loadFromResource("Controler.interface.Diagrama.Icone." + tm.name().substring(2), true));
         }
 
@@ -343,7 +343,7 @@ public class Controler {
                             men.setText(ca.texto);
                             //ac.putValue(Action.ACTION_COMMAND_KEY, "");
 
-                            for (Diagrama.TipoDeDiagrama tp : Diagrama.TipoDeDiagrama.values()) {
+                            for (Diagram.TipoDeDiagrama tp : Diagram.TipoDeDiagrama.values()) {
                                 String tmp = Editor.fromConfiguracao.getValor("Inspector.lst.tipodiagrama." + tp.name().substring(2).toLowerCase());
                                 ac = new Acao(editor, tmp, "Controler.interface.Diagrama.Icone." + tp.name().substring(2), tmp, ca.command);
                                 ac.IDX = -1;
@@ -436,7 +436,7 @@ public class Controler {
             String cmd = ac.getValue(Acao.ACTION_COMMAND_KEY).toString();
 
             if (cmd.equals(Comandos.cmdApagar.toString())) {
-                ac.setEnabled(editor.diagramaAtual.getListaDeItens().size() > Diagrama.totalInicialDeItens);
+                ac.setEnabled(editor.diagramaAtual.getListaDeItens().size() > Diagram.totalInicialDeItens);
             } else {
                 menuComandos comm = menuComandos.valueOf(cmd);
                 switch (comm) {
@@ -475,7 +475,7 @@ public class Controler {
                         break;
                     case cmdSelectAll:
                     case cmdExport:
-                        ac.setEnabled(editor.diagramaAtual.getListaDeItens().size() > Diagrama.totalInicialDeItens);
+                        ac.setEnabled(editor.diagramaAtual.getListaDeItens().size() > Diagram.totalInicialDeItens);
                         break;
 
                     case cmdDimPastLeft:
@@ -555,7 +555,7 @@ public class Controler {
                 img = new ImageIcon(imgx);
             }
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_GET_RESOURCE_IMG", e.getMessage());
+            util.Logger.log("ERROR_GET_RESOURCE_IMG", e.getMessage());
             return null;
         }
         if (img != null) {
@@ -580,7 +580,7 @@ public class Controler {
             Image imgx = Configuer.getImageFromResource(caminhoCompleto);
             img = new ImageIcon(imgx);
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_GET_RESOURCE_IMG", e.getMessage());
+            util.Logger.log("ERROR_GET_RESOURCE_IMG", e.getMessage());
             return null;
         }
         ImagemDeDiagrama.put("N" + path, img);

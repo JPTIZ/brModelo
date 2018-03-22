@@ -6,7 +6,7 @@ package diagramas.conceitual;
 
 import controlador.Controler;
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.Forma;
 import desenho.preAnyDiagrama.PreEntidade;
@@ -23,12 +23,12 @@ public class Uniao extends PreUniao {
 
     private static final long serialVersionUID = 8765681402109033957L;
 
-    public Uniao(Diagrama modelo) {
+    public Uniao(Diagram modelo) {
         super(modelo);
         nodic = false;
     }
 
-    public Uniao(Diagrama modelo, String texto) {
+    public Uniao(Diagram modelo, String texto) {
         super(modelo, texto);
         nodic = false;
     }

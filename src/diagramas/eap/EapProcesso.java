@@ -5,7 +5,7 @@
  */
 package diagramas.eap;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.Forma;
 import desenho.linhas.Linha;
@@ -29,7 +29,7 @@ public class EapProcesso extends baseDrawerFromForma {
 
     private static final long serialVersionUID = 7455235988018549136L;
 
-    public EapProcesso(Diagrama diagrama) {
+    public EapProcesso(Diagram diagrama) {
         super(diagrama);
         Inicie();
     }
@@ -41,7 +41,7 @@ public class EapProcesso extends baseDrawerFromForma {
         setGradienteStartColor(new Color(255, 255, 255, 255));
     }
 
-    public EapProcesso(Diagrama diagrama, String texto) {
+    public EapProcesso(Diagram diagrama, String texto) {
         super(diagrama, texto);
         Inicie();
     }

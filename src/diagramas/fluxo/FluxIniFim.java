@@ -6,7 +6,7 @@
 
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 
@@ -18,13 +18,13 @@ public class FluxIniFim extends FluxFormaBaseComplementar {
 
     private static final long serialVersionUID = -2307344882941774598L;
 
-    public FluxIniFim(Diagrama modelo) {
+    public FluxIniFim(Diagram modelo) {
         super(modelo);
         setMudarParaTextoLongo(false);
         showOrgDiag = true;
     }
 
-    public FluxIniFim(Diagrama modelo, String texto) {
+    public FluxIniFim(Diagram modelo, String texto) {
         super(modelo, texto);
         setMudarParaTextoLongo(false);
         showOrgDiag = true;

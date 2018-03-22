@@ -5,7 +5,7 @@
  */
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.preAnyDiagrama.PreLigacaoSetaComApenso;
 import desenho.preAnyDiagrama.PreTextoApenso;
 import java.awt.Point;
@@ -20,7 +20,7 @@ public class SetaAtividade extends PreLigacaoSetaComApenso {
 
     private static final long serialVersionUID = 3550303368965697341L;
 
-    public SetaAtividade(Diagrama diagrama) {
+    public SetaAtividade(Diagram diagrama) {
         super(diagrama);
     }
 

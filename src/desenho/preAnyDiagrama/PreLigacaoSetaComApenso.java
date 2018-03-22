@@ -5,7 +5,7 @@
  */
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.FormaElementar;
@@ -26,7 +26,7 @@ public class PreLigacaoSetaComApenso extends PreLigacaoSeta {
 
     private static final long serialVersionUID = -2754545357698771189L;
 
-    public PreLigacaoSetaComApenso(Diagrama diagrama) {
+    public PreLigacaoSetaComApenso(Diagram diagrama) {
         super(diagrama);
     }
 

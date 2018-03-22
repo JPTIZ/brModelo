@@ -5,7 +5,7 @@
 package desenho.preAnyDiagrama;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.Ancorador;
@@ -36,14 +36,14 @@ public class PreEntidade extends FormaRetangular {
 
     private static final long serialVersionUID = 6302631403788417883L;
 
-    public PreEntidade(Diagrama modelo) {
+    public PreEntidade(Diagram modelo) {
         super(modelo);
         showOrgDiag = true;
         getAncorasCode().add(Ancorador.CODE_ORG_AT);
         getAncorasCode().add(CODE_EDT_ATR);
     }
 
-    public PreEntidade(Diagrama modelo, String texto) {
+    public PreEntidade(Diagram modelo, String texto) {
         super(modelo, texto);
         showOrgDiag = true;
         getAncorasCode().add(Ancorador.CODE_ORG_AT);

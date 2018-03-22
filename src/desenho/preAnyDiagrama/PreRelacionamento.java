@@ -4,7 +4,7 @@
  */
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.Ancorador;
 import desenho.formas.Forma;
@@ -29,12 +29,12 @@ public class PreRelacionamento extends FormaLosangular {
 
     private static final long serialVersionUID = -361853607881278277L;
 
-    public PreRelacionamento(Diagrama modelo) {
+    public PreRelacionamento(Diagram modelo) {
         super(modelo);        
         getAncorasCode().add(Ancorador.CODE_ORG_AT);
     }
 
-    public PreRelacionamento(Diagrama modelo, String texto) {
+    public PreRelacionamento(Diagram modelo, String texto) {
         super(modelo, texto);        
         getAncorasCode().add(Ancorador.CODE_ORG_AT);
     }

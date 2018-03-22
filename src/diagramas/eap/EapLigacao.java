@@ -6,7 +6,7 @@
 
 package diagramas.eap;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.preAnyDiagrama.PreLigacaoSeta;
 import java.awt.Rectangle;
 
@@ -18,7 +18,7 @@ public class EapLigacao extends PreLigacaoSeta{
 
     private static final long serialVersionUID = 6205513013521266652L;
 
-    public EapLigacao(Diagrama diagrama) {
+    public EapLigacao(Diagram diagrama) {
         super(diagrama);
     }
 

@@ -4,7 +4,7 @@
  */
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.Forma;
 import desenho.formas.FormaNaoRetangularBase;
 import desenho.linhas.Linha;
@@ -31,14 +31,14 @@ public class PreAtributo extends FormaNaoRetangularBase {
 
     private static final long serialVersionUID = 7136642795302925356L;
 
-    public PreAtributo(Diagrama modelo) {
+    public PreAtributo(Diagram modelo) {
         super(modelo);
         setTipo(TipoDePontos.tp2Pontos);
         setDirecao(Direcao.Left);
         AceitaAjusteAutmatico = false;
     }
 
-    public PreAtributo(Diagrama modelo, String texto) {
+    public PreAtributo(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipo(TipoDePontos.tp2Pontos);
         setDirecao(Direcao.Left);

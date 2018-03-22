@@ -9,7 +9,7 @@ import controlador.Acao;
 import controlador.Configuer;
 import controlador.Controler;
 import controlador.Controler.menuComandos;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.ISuperControler;
 import controlador.apoios.TreeItem;
@@ -45,17 +45,17 @@ import util.TratadorDeImagens;
  *
  * @author ccandido
  */
-public class FramePrincipal extends javax.swing.JFrame implements ISuperControler {
+public class MainWindow extends javax.swing.JFrame implements ISuperControler {
 
     /**
-     * Creates new form FramePrincipal
+     * Creates new form MainWindow
      */
-    public FramePrincipal() {
+    public MainWindow() {
         initComponents();
         exitMenuItem.setAction(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                FramePrincipal.this.setVisible(false);
+//                MainWindow.this.setVisible(false);
 //                System.exit(0);
                 Fechador(false);
             }
@@ -78,7 +78,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
 
     private void DoInit() {
         Manager.AjusteTamanho();
-        Manager.setFramePrincipal(this);
+        Manager.setMainWindow(this);
         //Manager.PopuleBarraModelo(toolModelos);
         Manager.PopuleBarra(MenuDiagrama);
         Manager.PopuleBarra(BarraDeBotoes);
@@ -119,7 +119,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         Manager.setShowDiagramas(ListadorDeDiagramas);
         Manager.setLabelZoom(lblZoom);
         Manager.setLblStatus(lblStatus);
-        util.BrLogger.setStatus(statusMessageLabel);
+        util.Logger.setStatus(statusMessageLabel);
         try {
             Image img = Configuer.getImageFromResource("Controler.interface.Icone");
             img = TratadorDeImagens.makeColorTransparent(img, Color.white);
@@ -401,7 +401,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
 
         inspector1.setBorder(null);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("principal/Formularios_pt_BR"); // NOI18N
-        TabInspector.addTab(bundle.getString("FramePrincipal.inspector1.TabConstraints.tabTitle"), null, inspector1, bundle.getString("FramePrincipal.inspector1.TabConstraints.tabToolTip")); // NOI18N
+        TabInspector.addTab(bundle.getString("MainWindow.inspector1.TabConstraints.tabTitle"), null, inspector1, bundle.getString("MainWindow.inspector1.TabConstraints.tabToolTip")); // NOI18N
 
         jScrollPane1.setBorder(null);
 
@@ -417,10 +417,10 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         });
         jScrollPane1.setViewportView(TreeItensDiagrama);
 
-        TabInspector.addTab(bundle.getString("FramePrincipal.jScrollPane1.TabConstraints.tabTitle"), jScrollPane1); // NOI18N
+        TabInspector.addTab(bundle.getString("MainWindow.jScrollPane1.TabConstraints.tabTitle"), jScrollPane1); // NOI18N
 
         inspector2.setBorder(null);
-        TabInspector.addTab(bundle.getString("FramePrincipal.inspector2.TabConstraints.tabTitle"), inspector2); // NOI18N
+        TabInspector.addTab(bundle.getString("MainWindow.inspector2.TabConstraints.tabTitle"), inspector2); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -474,7 +474,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
             .addComponent(SplitInspector)
         );
 
-        SplitInspector.getAccessibleContext().setAccessibleName(bundle.getString("FramePrincipal.SplitInspector.AccessibleContext.accessibleName")); // NOI18N
+        SplitInspector.getAccessibleContext().setAccessibleName(bundle.getString("MainWindow.SplitInspector.AccessibleContext.accessibleName")); // NOI18N
 
         SplitMaster.setLeftComponent(panSplitInspectors);
 
@@ -490,23 +490,23 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnAbrir.setText(bundle.getString("FramePrincipal.jButton2.text")); // NOI18N
-        btnAbrir.setActionCommand(bundle.getString("FramePrincipal.btnAbrir.actionCommand")); // NOI18N
+        btnAbrir.setText(bundle.getString("MainWindow.jButton2.text")); // NOI18N
+        btnAbrir.setActionCommand(bundle.getString("MainWindow.btnAbrir.actionCommand")); // NOI18N
         btnAbrir.setFocusable(false);
         btnAbrir.setHideActionText(true);
         btnAbrir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAbrir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnAbrir);
-        btnAbrir.getAccessibleContext().setAccessibleName(bundle.getString("FramePrincipal.btnAbrir.AccessibleContext.accessibleName")); // NOI18N
+        btnAbrir.getAccessibleContext().setAccessibleName(bundle.getString("MainWindow.btnAbrir.AccessibleContext.accessibleName")); // NOI18N
 
-        btnSalvar.setText(bundle.getString("FramePrincipal.btnSalvar.text_1")); // NOI18N
+        btnSalvar.setText(bundle.getString("MainWindow.btnSalvar.text_1")); // NOI18N
         btnSalvar.setFocusable(false);
         btnSalvar.setHideActionText(true);
         btnSalvar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSalvar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnSalvar);
 
-        btnFechar.setText(bundle.getString("FramePrincipal.btnFechar.text")); // NOI18N
+        btnFechar.setText(bundle.getString("MainWindow.btnFechar.text")); // NOI18N
         btnFechar.setFocusable(false);
         btnFechar.setHideActionText(true);
         btnFechar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -514,7 +514,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jToolBar1.add(btnFechar);
 
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/menu_imprimir.png"))); // NOI18N
-        btnPrint.setText(bundle.getString("FramePrincipal.btnPrint.text")); // NOI18N
+        btnPrint.setText(bundle.getString("MainWindow.btnPrint.text")); // NOI18N
         btnPrint.setFocusable(false);
         btnPrint.setHideActionText(true);
         btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -527,14 +527,14 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jToolBar1.add(btnPrint);
         jToolBar1.add(jSeparator5);
 
-        btnDesfazer.setText(bundle.getString("FramePrincipal.btnDesfazer.text")); // NOI18N
+        btnDesfazer.setText(bundle.getString("MainWindow.btnDesfazer.text")); // NOI18N
         btnDesfazer.setFocusable(false);
         btnDesfazer.setHideActionText(true);
         btnDesfazer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDesfazer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnDesfazer);
 
-        btnRefazer.setText(bundle.getString("FramePrincipal.btnRefazer.text")); // NOI18N
+        btnRefazer.setText(bundle.getString("MainWindow.btnRefazer.text")); // NOI18N
         btnRefazer.setFocusable(false);
         btnRefazer.setHideActionText(true);
         btnRefazer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -542,14 +542,14 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jToolBar1.add(btnRefazer);
         jToolBar1.add(jSeparator3);
 
-        btnAnterior.setText(bundle.getString("FramePrincipal.btnAnterior.text")); // NOI18N
+        btnAnterior.setText(bundle.getString("MainWindow.btnAnterior.text")); // NOI18N
         btnAnterior.setFocusable(false);
         btnAnterior.setHideActionText(true);
         btnAnterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAnterior.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnAnterior);
 
-        btnProximo.setText(bundle.getString("FramePrincipal.btnProximo.text")); // NOI18N
+        btnProximo.setText(bundle.getString("MainWindow.btnProximo.text")); // NOI18N
         btnProximo.setFocusable(false);
         btnProximo.setHideActionText(true);
         btnProximo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -557,14 +557,14 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jToolBar1.add(btnProximo);
         jToolBar1.add(jSeparator4);
 
-        btnBringToFront.setText(bundle.getString("FramePrincipal.btnBringToFront.text")); // NOI18N
+        btnBringToFront.setText(bundle.getString("MainWindow.btnBringToFront.text")); // NOI18N
         btnBringToFront.setFocusable(false);
         btnBringToFront.setHideActionText(true);
         btnBringToFront.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBringToFront.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnBringToFront);
 
-        btnSendToBack.setText(bundle.getString("FramePrincipal.btnSendToBack.text")); // NOI18N
+        btnSendToBack.setText(bundle.getString("MainWindow.btnSendToBack.text")); // NOI18N
         btnSendToBack.setFocusable(false);
         btnSendToBack.setHideActionText(true);
         btnSendToBack.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -572,28 +572,28 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jToolBar1.add(btnSendToBack);
         jToolBar1.add(jSeparator2);
 
-        b0.setText(bundle.getString("FramePrincipal.b0.text")); // NOI18N
+        b0.setText(bundle.getString("MainWindow.b0.text")); // NOI18N
         b0.setFocusable(false);
         b0.setHideActionText(true);
         b0.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b0.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b0);
 
-        b1.setText(bundle.getString("FramePrincipal.b1.text")); // NOI18N
+        b1.setText(bundle.getString("MainWindow.b1.text")); // NOI18N
         b1.setFocusable(false);
         b1.setHideActionText(true);
         b1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b1);
 
-        b2.setText(bundle.getString("FramePrincipal.b2.text")); // NOI18N
+        b2.setText(bundle.getString("MainWindow.b2.text")); // NOI18N
         b2.setFocusable(false);
         b2.setHideActionText(true);
         b2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b2);
 
-        b3.setText(bundle.getString("FramePrincipal.b3.text")); // NOI18N
+        b3.setText(bundle.getString("MainWindow.b3.text")); // NOI18N
         b3.setFocusable(false);
         b3.setHideActionText(true);
         b3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -610,7 +610,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         });
         jToolBar1.add(btnMenos);
 
-        lblZoom.setText(bundle.getString("FramePrincipal.lblZoom.text")); // NOI18N
+        lblZoom.setText(bundle.getString("MainWindow.lblZoom.text")); // NOI18N
         jToolBar1.add(lblZoom);
 
         btnMais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/zoom.png"))); // NOI18N
@@ -623,14 +623,14 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jToolBar1.add(btnMais);
         jToolBar1.add(jSeparator7);
 
-        b4.setText(bundle.getString("FramePrincipal.b4.text")); // NOI18N
+        b4.setText(bundle.getString("MainWindow.b4.text")); // NOI18N
         b4.setFocusable(false);
         b4.setHideActionText(true);
         b4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b4);
 
-        b5.setText(bundle.getString("FramePrincipal.b5.text")); // NOI18N
+        b5.setText(bundle.getString("MainWindow.b5.text")); // NOI18N
         b5.setFocusable(false);
         b5.setHideActionText(true);
         b5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -638,56 +638,56 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jToolBar1.add(b5);
         jToolBar1.add(jSeparator9);
 
-        b6.setText(bundle.getString("FramePrincipal.b6.text")); // NOI18N
+        b6.setText(bundle.getString("MainWindow.b6.text")); // NOI18N
         b6.setFocusable(false);
         b6.setHideActionText(true);
         b6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b6);
 
-        b7.setText(bundle.getString("FramePrincipal.b7.text")); // NOI18N
+        b7.setText(bundle.getString("MainWindow.b7.text")); // NOI18N
         b7.setFocusable(false);
         b7.setHideActionText(true);
         b7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b7);
 
-        b8.setText(bundle.getString("FramePrincipal.b8.text")); // NOI18N
+        b8.setText(bundle.getString("MainWindow.b8.text")); // NOI18N
         b8.setFocusable(false);
         b8.setHideActionText(true);
         b8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b8);
 
-        b9.setText(bundle.getString("FramePrincipal.b9.text")); // NOI18N
+        b9.setText(bundle.getString("MainWindow.b9.text")); // NOI18N
         b9.setFocusable(false);
         b9.setHideActionText(true);
         b9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b9);
 
-        b10.setText(bundle.getString("FramePrincipal.b10.text")); // NOI18N
+        b10.setText(bundle.getString("MainWindow.b10.text")); // NOI18N
         b10.setFocusable(false);
         b10.setHideActionText(true);
         b10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b10.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b10);
 
-        b11.setText(bundle.getString("FramePrincipal.b11.text")); // NOI18N
+        b11.setText(bundle.getString("MainWindow.b11.text")); // NOI18N
         b11.setFocusable(false);
         b11.setHideActionText(true);
         b11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b11);
 
-        b12.setText(bundle.getString("FramePrincipal.b12.text")); // NOI18N
+        b12.setText(bundle.getString("MainWindow.b12.text")); // NOI18N
         b12.setFocusable(false);
         b12.setHideActionText(true);
         b12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         b12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(b12);
 
-        b13.setText(bundle.getString("FramePrincipal.b13.text")); // NOI18N
+        b13.setText(bundle.getString("MainWindow.b13.text")); // NOI18N
         b13.setFocusable(false);
         b13.setHideActionText(true);
         b13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -743,11 +743,11 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
 
         SplitDiagramas.setLeftComponent(jPanel1);
 
-        jTabbedPane1.setToolTipText(bundle.getString("FramePrincipal.ScrollerBarraDeBotoes.TabConstraints.tabTitle")); // NOI18N
+        jTabbedPane1.setToolTipText(bundle.getString("MainWindow.ScrollerBarraDeBotoes.TabConstraints.tabTitle")); // NOI18N
 
         ScrollerBarraDeBotoes.setBorder(null);
         ScrollerBarraDeBotoes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ScrollerBarraDeBotoes.setToolTipText(bundle.getString("FramePrincipal.ScrollerBarraDeBotoes.TabConstraints.tabTitle")); // NOI18N
+        ScrollerBarraDeBotoes.setToolTipText(bundle.getString("MainWindow.ScrollerBarraDeBotoes.TabConstraints.tabTitle")); // NOI18N
         ScrollerBarraDeBotoes.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         BarraDeBotoes.setMinimumSize(new java.awt.Dimension(70, 0));
@@ -763,8 +763,8 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
 
         statusPanel.setPreferredSize(new java.awt.Dimension(54, 30));
 
-        statusMessageLabel.setText(bundle.getString("FramePrincipal.statusMessageLabel.text")); // NOI18N
-        statusMessageLabel.setToolTipText(bundle.getString("FramePrincipal.statusMessageLabel.toolTipText")); // NOI18N
+        statusMessageLabel.setText(bundle.getString("MainWindow.statusMessageLabel.text")); // NOI18N
+        statusMessageLabel.setToolTipText(bundle.getString("MainWindow.statusMessageLabel.toolTipText")); // NOI18N
         statusMessageLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         statusMessageLabel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -773,8 +773,8 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         jSeparator1.setDoubleBuffered(true);
 
         lblShowAllMSG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblShowAllMSG.setText(bundle.getString("FramePrincipal.lblShowAllMSG.text")); // NOI18N
-        lblShowAllMSG.setToolTipText(bundle.getString("FramePrincipal.lblShowAllMSG.toolTipText")); // NOI18N
+        lblShowAllMSG.setText(bundle.getString("MainWindow.lblShowAllMSG.text")); // NOI18N
+        lblShowAllMSG.setToolTipText(bundle.getString("MainWindow.lblShowAllMSG.toolTipText")); // NOI18N
         lblShowAllMSG.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblShowAllMSG.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblShowAllMSG.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -791,8 +791,8 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
 
         lblStatus.setBackground(new java.awt.Color(204, 204, 204));
         lblStatus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblStatus.setText(bundle.getString("FramePrincipal.lblStatus.text")); // NOI18N
-        lblStatus.setToolTipText(bundle.getString("FramePrincipal.lblStatus.toolTipText")); // NOI18N
+        lblStatus.setText(bundle.getString("MainWindow.lblStatus.text")); // NOI18N
+        lblStatus.setToolTipText(bundle.getString("MainWindow.lblStatus.toolTipText")); // NOI18N
         lblStatus.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblStatus.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -820,30 +820,30 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
                 .addGap(3, 3, 3))
         );
 
-        lblStatus.getAccessibleContext().setAccessibleName(bundle.getString("FramePrincipal.lblStatus.AccessibleContext.accessibleName")); // NOI18N
-        lblStatus.getAccessibleContext().setAccessibleDescription(bundle.getString("FramePrincipal.lblStatus.AccessibleContext.accessibleDescription")); // NOI18N
+        lblStatus.getAccessibleContext().setAccessibleName(bundle.getString("MainWindow.lblStatus.AccessibleContext.accessibleName")); // NOI18N
+        lblStatus.getAccessibleContext().setAccessibleDescription(bundle.getString("MainWindow.lblStatus.AccessibleContext.accessibleDescription")); // NOI18N
 
-        fileMenu.setText(bundle.getString("FramePrincipal.fileMenu.text")); // NOI18N
+        fileMenu.setText(bundle.getString("MainWindow.fileMenu.text")); // NOI18N
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         exitMenuItem.setMnemonic('r');
-        exitMenuItem.setText(bundle.getString("FramePrincipal.exitMenuItem.text")); // NOI18N
+        exitMenuItem.setText(bundle.getString("MainWindow.exitMenuItem.text")); // NOI18N
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
 
-        MenuEditar.setText(bundle.getString("FramePrincipal.MenuEditar.text")); // NOI18N
+        MenuEditar.setText(bundle.getString("MainWindow.MenuEditar.text")); // NOI18N
         menuBar.add(MenuEditar);
 
-        MenuDiagrama.setText(bundle.getString("FramePrincipal.MenuDiagrama.text")); // NOI18N
+        MenuDiagrama.setText(bundle.getString("MainWindow.MenuDiagrama.text")); // NOI18N
 
-        menuCMD.setText(bundle.getString("FramePrincipal.menuCMD.text")); // NOI18N
+        menuCMD.setText(bundle.getString("MainWindow.menuCMD.text")); // NOI18N
         menuCMD.setEnabled(false);
         MenuDiagrama.add(menuCMD);
 
         menuBar.add(MenuDiagrama);
 
-        MenuPartes.setText(bundle.getString("FramePrincipal.MenuPartes.text")); // NOI18N
+        MenuPartes.setText(bundle.getString("MainWindow.MenuPartes.text")); // NOI18N
         MenuPartes.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
@@ -854,7 +854,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
             }
         });
 
-        MenuVer.setText(bundle.getString("FramePrincipal.MenuVer.text")); // NOI18N
+        MenuVer.setText(bundle.getString("MainWindow.MenuVer.text")); // NOI18N
         MenuVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuVerActionPerformed(evt);
@@ -862,7 +862,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         });
         MenuPartes.add(MenuVer);
 
-        MenuAdicionar.setText(bundle.getString("FramePrincipal.MenuAdicionar.text")); // NOI18N
+        MenuAdicionar.setText(bundle.getString("MainWindow.MenuAdicionar.text")); // NOI18N
         MenuAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuAdicionarActionPerformed(evt);
@@ -870,7 +870,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         });
         MenuPartes.add(MenuAdicionar);
 
-        MenuSalvarRepo.setText(bundle.getString("FramePrincipal.MenuSalvarRepo.text")); // NOI18N
+        MenuSalvarRepo.setText(bundle.getString("MainWindow.MenuSalvarRepo.text")); // NOI18N
         MenuSalvarRepo.setEnabled(false);
         MenuSalvarRepo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -881,12 +881,12 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
 
         menuBar.add(MenuPartes);
 
-        helpMenu.setText(bundle.getString("FramePrincipal.helpMenu.text")); // NOI18N
+        helpMenu.setText(bundle.getString("MainWindow.helpMenu.text")); // NOI18N
 
         menuAjuda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         menuAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ajuda.png"))); // NOI18N
         menuAjuda.setMnemonic('j');
-        menuAjuda.setText(bundle.getString("FramePrincipal.menuAjuda.text")); // NOI18N
+        menuAjuda.setText(bundle.getString("MainWindow.menuAjuda.text")); // NOI18N
         menuAjuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuAjudaActionPerformed(evt);
@@ -894,7 +894,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         });
         helpMenu.add(menuAjuda);
 
-        menuSobre.setText(bundle.getString("FramePrincipal.menuSobre.text")); // NOI18N
+        menuSobre.setText(bundle.getString("MainWindow.menuSobre.text")); // NOI18N
         menuSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuSobreActionPerformed(evt);
@@ -1050,17 +1050,17 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
         FormaLogs fm = new FormaLogs(this, true);
         fm.setLocationRelativeTo(this);
         fm.setVisible(true);
-//        if (BrLogger.MSGs.isEmpty()) {
+//        if (Logger.MSGs.isEmpty()) {
 //            JOptionPane.showMessageDialog(this,
 //                    Editor.fromConfiguracao.getValor("Controler.MSG_STATUS_NO_ERROR"),
 //                    Editor.fromConfiguracao.getValor("Controler.MSG_STATUS_TITLE"),
 //                    JOptionPane.INFORMATION_MESSAGE);
 //        } else if (JOptionPane.showConfirmDialog(this,
 //                Editor.fromConfiguracao.getValor("Controler.MSG_STATUS_TITLE") + ":\n"
-//                + BrLogger.MSGs + "\n\n" + Editor.fromConfiguracao.getValor("Controler.MSG_STATUS_CLEAN"),
+//                + Logger.MSGs + "\n\n" + Editor.fromConfiguracao.getValor("Controler.MSG_STATUS_CLEAN"),
 //                Editor.fromConfiguracao.getValor("Controler.MSG_STATUS_TITLE"),
 //                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-//            BrLogger.Clean();
+//            Logger.clean();
 //        }
     }//GEN-LAST:event_lblShowAllMSGMouseClicked
 
@@ -1112,7 +1112,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
     }//GEN-LAST:event_menuAjudaActionPerformed
 
     private void MenuSalvarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSalvarRepoActionPerformed
-        if (formPartes != null && formPartes.Partes.isMudou()) {
+        if (formPartes != null && formPartes.Partes.hasChanged()) {
             formPartes.Salva();
         }
     }//GEN-LAST:event_MenuSalvarRepoActionPerformed
@@ -1149,7 +1149,7 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
     }
 
     public void Fechador(boolean sofecha) throws HeadlessException {
-        if (formPartes != null && formPartes.Partes.isMudou() && (!sofecha)) {
+        if (formPartes != null && formPartes.Partes.hasChanged() && (!sofecha)) {
             if (util.Dialogos.ShowMessageConfirm(this.getRootPane(), Editor.fromConfiguracao.getValor("Controler.MSG_SAVE_TEMPLATE")) == JOptionPane.YES_OPTION) {
                 formPartes.Salva();
             }
@@ -1169,10 +1169,10 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
             return;
         }
         int i = 0;
-        for (Diagrama d : Manager.getDiagramas()) {
+        for (Diagram d : Manager.getDiagramas()) {
             if (d.getMudou()) {
                 if (fm.getCheks().get(i).isSelected()) {
-                    if (!d.Salvar(d.getArquivo())) {
+                    if (!d.save(d.getArquivo())) {
                         return;
                     }
                 }
@@ -1307,6 +1307,6 @@ public class FramePrincipal extends javax.swing.JFrame implements ISuperControle
             return "   ";
         }
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("principal/Formularios_pt_BR"); // NOI18N
-        return bundle.getString("FramePrincipal.ScrollerBarraDeBotoes.TabConstraints.tabTitle");
+        return bundle.getString("MainWindow.ScrollerBarraDeBotoes.TabConstraints.tabTitle");
     }
 }

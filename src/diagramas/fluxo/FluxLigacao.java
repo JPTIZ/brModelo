@@ -6,7 +6,7 @@
 
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.preAnyDiagrama.PreLigacaoSeta;
 
 /**
@@ -17,7 +17,7 @@ public class FluxLigacao extends PreLigacaoSeta{
 
     private static final long serialVersionUID = 1122443174297288831L;
 
-    public FluxLigacao(Diagrama diagrama) {
+    public FluxLigacao(Diagram diagrama) {
         super(diagrama);
     }
 }

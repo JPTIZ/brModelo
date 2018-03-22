@@ -5,7 +5,7 @@
  */
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -17,11 +17,11 @@ public class InicioAtividade extends PreIniFimAtiv {
 
     private static final long serialVersionUID = 5679101297671037972L;
 
-    public InicioAtividade(Diagrama modelo) {
+    public InicioAtividade(Diagram modelo) {
         super(modelo);
     }
 
-    public InicioAtividade(Diagrama modelo, String texto) {
+    public InicioAtividade(Diagram modelo, String texto) {
         super(modelo, texto);
     }
     

@@ -34,7 +34,7 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import principal.Aplicacao;
+import principal.Application;
 
 /**
  *
@@ -254,7 +254,7 @@ public class EditorDeAtributos extends javax.swing.JDialog {
     }
 
     private void AdbtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdbtxtActionPerformed
-        String txt = util.Dialogos.ShowDlgTexto(Aplicacao.fmPrincipal.getRootPane(), "");
+        String txt = util.Dialogos.ShowDlgTexto(Application.mainWindow.getRootPane(), "");
         if (txt.isEmpty()) {
             return;
         }

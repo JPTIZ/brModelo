@@ -29,7 +29,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.KeyStroke;
-import principal.Aplicacao;
+import principal.Application;
 
 /**
  *
@@ -217,8 +217,8 @@ public class MostradorDeCodigo extends javax.swing.JDialog implements ClipboardO
     }//GEN-LAST:event_btnCopyActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        controlador.editores.EditorTexto edt = new EditorTexto((Frame) (Aplicacao.fmPrincipal.getRootPane()).getParent(), true);
-        edt.setLocationRelativeTo(Aplicacao.fmPrincipal.getRootPane());
+        controlador.editores.EditorTexto edt = new EditorTexto((Frame) (Application.mainWindow.getRootPane()).getParent(), true);
+        edt.setLocationRelativeTo(Application.mainWindow.getRootPane());
         edt.setTexto(buffer);
         edt.setVisible(true);
     }//GEN-LAST:event_btnEditarActionPerformed

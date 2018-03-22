@@ -18,13 +18,13 @@ import java.awt.Stroke;
  */
 public class Selecionador extends Forma {
 
-    public Selecionador(Diagrama diagrama) {
+    public Selecionador(Diagram diagrama) {
         super(diagrama);
         setVisible(false);
         setSelecionavel(false);
     }
 
-    public Selecionador(Diagrama diagrama, String texto) {
+    public Selecionador(Diagram diagrama, String texto) {
         super(diagrama, texto);
         setVisible(false);
         setSelecionavel(false);

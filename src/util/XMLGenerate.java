@@ -4,7 +4,7 @@
  */
 package util;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import desenho.Elementar;
 import desenho.FormaElementar;
@@ -40,7 +40,7 @@ public class XMLGenerate {
             Document document = documentBuilder.newDocument();
             return document;
         } catch (ParserConfigurationException ex) {
-            util.BrLogger.Logger("ERROR_XML_DOC", ex.getMessage());
+            util.Logger.log("ERROR_XML_DOC", ex.getMessage());
         }
         return null;
     }
@@ -53,7 +53,7 @@ public class XMLGenerate {
             doc.getDocumentElement().normalize();
             return doc;
         } catch (SAXException | IOException | ParserConfigurationException ex) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_FILE", ex.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_LOAD_FILE", ex.getMessage());
         }
         return null;
     }
@@ -66,14 +66,14 @@ public class XMLGenerate {
             doc.getDocumentElement().normalize();
             return doc;
         } catch (SAXException | IOException | ParserConfigurationException ex) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_FROM_STR", ex.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_LOAD_FROM_STR", ex.getMessage());
         }
         return null;
     }
     
-    public static StringWriter GeraXMLtoSaveFrom(Diagrama atual, boolean apenasSelecao) {
+    public static StringWriter GeraXMLtoSaveFrom(Diagram atual, boolean apenasSelecao) {
         Document doc = GeraDocument();
-        Element rootElement = doc.createElement(Diagrama.nodePrincipal);
+        Element rootElement = doc.createElement(Diagram.nodePrincipal);
         rootElement.setAttribute("TIPO", atual.getTipo().name());
         rootElement.setAttribute("ID", String.valueOf(atual.getID()));
         rootElement.setAttribute("UniversalUnicID", atual.getUniversalUnicID());
@@ -103,13 +103,13 @@ public class XMLGenerate {
             transformer.transform(source, result);
             return out;
         } catch (TransformerException ex) {
-            util.BrLogger.Logger("ERROR_XML_DOC", ex.getMessage());
+            util.Logger.log("ERROR_XML_DOC", ex.getMessage());
         }
         
         return null;
     }
     
-    public static String GeraXMLFrom(Diagrama atual, boolean apenasSelecao) {
+    public static String GeraXMLFrom(Diagram atual, boolean apenasSelecao) {
         StringWriter res = GeraXMLtoSaveFrom(atual, apenasSelecao);
         if (res != null) {
             return res.getBuffer().toString();
@@ -127,7 +127,7 @@ public class XMLGenerate {
             try {
                 it.ToXlm(doc, root);
             } catch (Exception e) {
-                util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD_XML_ITENS",
+                util.Logger.log("ERROR_DIAGRAMA_LOAD_XML_ITENS",
                         Editor.getClassTexto(it)
                         + " (ID: " + String.valueOf(it.getID()) + ") ",
                         e.getMessage());

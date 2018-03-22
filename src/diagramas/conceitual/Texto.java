@@ -2,7 +2,7 @@ package diagramas.conceitual;
 
 import controlador.Controler;
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.FormaElementar;
 import desenho.linhas.SuperLinha;
@@ -24,11 +24,11 @@ public class Texto extends PreTexto {
 
     private static final long serialVersionUID = -8327102253638096870L;
 
-    public Texto(Diagrama modelo) {
+    public Texto(Diagram modelo) {
         super(modelo);
     }
 
-    public Texto(Diagrama modelo, String texto) {
+    public Texto(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

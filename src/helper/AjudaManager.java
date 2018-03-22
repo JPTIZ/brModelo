@@ -54,7 +54,7 @@ public class AjudaManager extends ParteAjuda {
             }
             return res;
         } catch (NullPointerException | IOException | ClassNotFoundException iOException) {
-            util.BrLogger.Logger("ERROR_HELP_LOAD", iOException.getMessage());
+            util.Logger.log("ERROR_HELP_LOAD", iOException.getMessage());
             return null;
         }
     }
@@ -67,7 +67,7 @@ public class AjudaManager extends ParteAjuda {
             }
             return true;
         } catch (IOException iOException) {
-            util.BrLogger.Logger("ERROR_HELP_SAVE", iOException.getMessage());
+            util.Logger.log("ERROR_HELP_SAVE", iOException.getMessage());
             return false;
         }
     }

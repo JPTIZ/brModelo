@@ -6,7 +6,7 @@
 package diagramas.livre;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.preAnyDiagrama.PreTextoApenso;
@@ -21,11 +21,11 @@ public class LivreTextoApenso extends PreTextoApenso {
 
     private static final long serialVersionUID = 2640523135001628941L;
 
-    public LivreTextoApenso(Diagrama modelo) {
+    public LivreTextoApenso(Diagram modelo) {
         super(modelo);
     }
 
-    public LivreTextoApenso(Diagrama modelo, String texto) {
+    public LivreTextoApenso(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

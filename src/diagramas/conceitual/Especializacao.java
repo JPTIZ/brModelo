@@ -6,7 +6,7 @@
 package diagramas.conceitual;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.Forma;
@@ -24,13 +24,13 @@ public class Especializacao extends PreEspecializacao {
 
     private static final long serialVersionUID = 3595682719755602909L;
 
-    public Especializacao(Diagrama modelo) {
+    public Especializacao(Diagram modelo) {
         super(modelo);
         nodic = false;
         paintParcial = true;
     }
 
-    public Especializacao(Diagrama modelo, String texto) {
+    public Especializacao(Diagram modelo, String texto) {
         super(modelo, texto);
         nodic = false;
         paintParcial = true;

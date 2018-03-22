@@ -9,7 +9,7 @@ import desenho.FormaElementar;
 import desenho.ElementarListener;
 import desenho.PontoElementar;
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.apoios.TreeItem;
 import controlador.inspector.InspectorProperty;
 import desenho.linhas.Linha;
@@ -40,7 +40,7 @@ public class Forma extends FormaElementar {
 
     private static final long serialVersionUID = 632178864799887969L;
 
-    public Forma(Diagrama diagrama) {
+    public Forma(Diagram diagrama) {
         super(diagrama);
 
         this.Pontos = new PontoElementar[8];
@@ -57,7 +57,7 @@ public class Forma extends FormaElementar {
         }
     }
 
-    public Forma(Diagrama diagrama, String texto) {
+    public Forma(Diagram diagrama, String texto) {
         this(diagrama);//super(diagrama);
         this.SetTexto(diagrama.Nomeie(texto));
     }

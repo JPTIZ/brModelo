@@ -6,7 +6,7 @@
 
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 
 /**
  *
@@ -16,12 +16,12 @@ public class LivreRetangulo extends LivreBase {
 
     private static final long serialVersionUID = 3740634104066034638L;
 
-    public LivreRetangulo(Diagrama modelo, String texto) {
+    public LivreRetangulo(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipoDesenho(LivreBase.TipoDraw.tpRetangulo);
     }
 
-    public LivreRetangulo(Diagrama modelo) {
+    public LivreRetangulo(Diagram modelo) {
         super(modelo);
         setTipoDesenho(LivreBase.TipoDraw.tpRetangulo);
     }

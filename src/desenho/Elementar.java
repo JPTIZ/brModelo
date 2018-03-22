@@ -4,7 +4,7 @@
  */
 package desenho;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.Forma;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -30,7 +30,7 @@ public class Elementar implements ElementarListener, Serializable {
      */
     static final long serialVersionUID = 2103191058069777L;
 
-    private Diagrama master;
+    private Diagram master;
     private boolean visible = true;
     private Font font;
     private Color backColor = Color.LIGHT_GRAY;
@@ -75,22 +75,22 @@ public class Elementar implements ElementarListener, Serializable {
     }
 
     /**
-     * Diagrama 
+     * Diagram 
      * @return the master
      */
-    public Diagrama getMaster() {
+    public Diagram getMaster() {
         return master;
     }
 
     /**
-     * Diagrama 
+     * Diagram 
      * @param master the master to set
      */
-    public void setMaster(Diagrama master) {
+    public void setMaster(Diagram master) {
         if (this.master == master) {
             return;
         }
-        Diagrama bkp = this.master;
+        Diagram bkp = this.master;
         this.master = master;
         if ((master == null) && (bkp != null) && (isVisible())) {
             bkp.repaint();
@@ -442,7 +442,7 @@ public class Elementar implements ElementarListener, Serializable {
     }
 
     /**
-     * Chama o método responsável pela repintagem de todo o Diagrama
+     * Chama o método responsável pela repintagem de todo o Diagram
      */
     protected void DoMasterInvalidate() {
         if (master != null) {
@@ -660,7 +660,7 @@ public class Elementar implements ElementarListener, Serializable {
     }
 
     /**
-     * Recoloca o componente na área útil do Diagrama
+     * Recoloca o componente na área útil do Diagram
      * @return 
      */
     public boolean Reenquadre() {

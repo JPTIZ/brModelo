@@ -5,7 +5,7 @@
  */
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.Forma;
 import desenho.formas.FormaCircular;
 import desenho.linhas.Linha;
@@ -19,13 +19,13 @@ public class PreIniFimAtiv extends FormaCircular {
 
     private static final long serialVersionUID = -499379874848514932L;
 
-    public PreIniFimAtiv(Diagrama modelo) {
+    public PreIniFimAtiv(Diagram modelo) {
         super(modelo);
         editFonte = false;
         showOrgDiag = true;
     }
 
-    public PreIniFimAtiv(Diagrama modelo, String texto) {
+    public PreIniFimAtiv(Diagram modelo, String texto) {
         super(modelo, texto);
         editFonte = false;
         showOrgDiag = true;

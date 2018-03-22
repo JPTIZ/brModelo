@@ -7,7 +7,7 @@ package diagramas.livre;
 
 import controlador.Controler;
 import controlador.Controler.Comandos;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import desenho.Elementar;
 import desenho.FormaElementar;
@@ -25,13 +25,13 @@ import org.w3c.dom.Document;
  *
  * @author SAA
  */
-public class DiagramaLivre extends Diagrama {
+public class DiagramaLivre extends Diagram {
 
     private static final long serialVersionUID = 1440265007689102490L;
 
     public DiagramaLivre(Editor omaster) {
         super(omaster);
-        setTipo(Diagrama.TipoDeDiagrama.tpLivre);
+        setTipo(Diagram.TipoDeDiagrama.LIVRE);
 
         meusComandos.add(Controler.Comandos.cmdLivreRetangulo.name());
         meusComandos.add(Controler.Comandos.cmdLivreRetanguloArr.name());
@@ -165,7 +165,7 @@ public class DiagramaLivre extends Diagrama {
                     if (res instanceof FormaElementar) {
                         obj1 = (FormaElementar) res;
                     }
-                    cliq1 = new Diagrama.clickForma(obj1, posi);
+                    cliq1 = new Diagram.clickForma(obj1, posi);
                     return null;
                 }
                 if (cliq2 == null) {
@@ -174,7 +174,7 @@ public class DiagramaLivre extends Diagrama {
                     if (res instanceof FormaElementar) {
                         obj2 = (FormaElementar) res;
                     }
-                    cliq2 = new Diagrama.clickForma(obj2, posi);
+                    cliq2 = new Diagram.clickForma(obj2, posi);
                 }
                 PreLigacaoSeta linha = (com == Comandos.cmdLivreLigacao ? new LivreLigacao(this) : new LivreLigacaoSimples(this));
                 resu = linha;

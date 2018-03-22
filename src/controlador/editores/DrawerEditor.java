@@ -16,7 +16,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.event.ListSelectionEvent;
-import util.BrLogger;
+import util.Logger;
 
 /**
  *
@@ -393,7 +393,7 @@ public class DrawerEditor extends javax.swing.JDialog implements Editor.iParaOut
 
             }
         } catch (Exception e) {
-            BrLogger.Logger("AceitaEdicao", e.getMessage());
+            Logger.log("AceitaEdicao", e.getMessage());
             PerformInspectorFor();
             Item.InvalidateArea();
             return false;

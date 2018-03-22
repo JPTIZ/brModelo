@@ -4,7 +4,7 @@
  */
 package desenho.linhas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.Elementar;
 import desenho.FormaElementar;
 import desenho.formas.Forma;
@@ -29,7 +29,7 @@ public class Linha extends FormaElementar {
     protected float fator_largura = 1f;
     private final float larguraBase = 1f;
 
-    public Linha(Diagrama master) {
+    public Linha(Diagram master) {
         super(master);
     }
     private ArrayList<PontoDeLinha> Pontos = new ArrayList<>();

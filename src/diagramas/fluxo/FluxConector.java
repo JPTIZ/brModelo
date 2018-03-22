@@ -6,7 +6,7 @@
 
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
@@ -19,13 +19,13 @@ public class FluxConector extends FluxFormaBaseComplementar {
 
     private static final long serialVersionUID = -6407281252916876141L;
 
-    public FluxConector(Diagrama modelo) {
+    public FluxConector(Diagram modelo) {
         super(modelo);
         setMudarParaTextoLongo(false);
         editFonte = false;
     }
 
-    public FluxConector(Diagrama modelo, String texto) {
+    public FluxConector(Diagram modelo, String texto) {
         super(modelo, texto);
         setMudarParaTextoLongo(false);
         editFonte = false;

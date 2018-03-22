@@ -5,7 +5,7 @@
 package controlador.apoios;
 
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
@@ -27,15 +27,15 @@ public class Historico {
         int posicao = 0;
         final int MAX = 500;
         
-        Diagrama diagrama;
+        Diagram diagrama;
         ArrayList<ByteArrayOutputStream> diagramas = new ArrayList<>();
 
-        public HistDiagrama(Diagrama diagrama) {
+        public HistDiagrama(Diagram diagrama) {
             this.diagrama = diagrama;
-            diagramas.add(Diagrama.SaveToStream(diagrama));
+            diagramas.add(Diagram.SaveToStream(diagrama));
         }
 
-        public boolean isMe(Diagrama mod) {
+        public boolean isMe(Diagram mod) {
             return diagrama == mod;
         }
 
@@ -47,7 +47,7 @@ public class Historico {
             return posicao < diagramas.size() - 1;
         }
 
-        public Diagrama desfazer() {
+        public Diagram desfazer() {
             if (podeDesfazer()) {
                 posicao--;
                 LoadDiagrama();
@@ -57,7 +57,7 @@ public class Historico {
             }
         }
 
-        public Diagrama refazer() {
+        public Diagram refazer() {
             if (podeRefazer()) {
                 posicao++;
                 LoadDiagrama();
@@ -70,15 +70,15 @@ public class Historico {
         private void LoadDiagrama() {
             String tmpNome = diagrama.getNome();
             String tmpArq = diagrama.getArquivo();
-            diagrama = Diagrama.LoadFromStream(diagramas.get(posicao));
+            diagrama = Diagram.LoadFromStream(diagramas.get(posicao));
             diagrama.SetNome(tmpNome);
             diagrama.setArquivo(tmpArq);
             diagrama.setMaster(Historico.this.master);
             diagrama.setMudou(true);
         }
 
-        public synchronized void Append(Diagrama mo) {
-            ByteArrayOutputStream res = Diagrama.SaveToStream(mo);
+        public synchronized void Append(Diagram mo) {
+            ByteArrayOutputStream res = Diagram.SaveToStream(mo);
             if (res == null) {
                 return;
             }
@@ -103,14 +103,14 @@ public class Historico {
     /**
      * Poupa percorrer toda a coleção para encontrar o hitórico atual
      */
-    private HistDiagrama updateAtual(Diagrama diagramaAtual) {
+    private HistDiagrama updateAtual(Diagram diagramaAtual) {
         if (atual == null || !atual.isMe(diagramaAtual)) {
             atual = getByDiagrama(diagramaAtual);
         }
         return atual;
     }
 
-    private HistDiagrama getByDiagrama(Diagrama mo) {
+    private HistDiagrama getByDiagrama(Diagram mo) {
         for (HistDiagrama hm : lista) {
             if (hm.isMe(mo)) {
                 return hm;
@@ -122,7 +122,7 @@ public class Historico {
     public ArrayList<String> getStrDiagramas() {
         ArrayList<String> res = new ArrayList<>();
         int i = 0;
-        for (Diagrama hm : getDiagramas()) {
+        for (Diagram hm : getDiagramas()) {
             i++;
             String tmp = "[" + Integer.toString(i) + "] " + hm.getNomeFormatado();
 
@@ -134,10 +134,10 @@ public class Historico {
     /**
      * Não precisa recompor a lista sempre.
      */
-    private ArrayList<Diagrama> listaDiagramas = new ArrayList<>();
-    public ArrayList<Diagrama> getDiagramas() {
+    private ArrayList<Diagram> listaDiagramas = new ArrayList<>();
+    public ArrayList<Diagram> getDiagramas() {
         if (listaDiagramas != null) return listaDiagramas;
-        ArrayList<Diagrama> res = new ArrayList<>();
+        ArrayList<Diagram> res = new ArrayList<>();
         lista.stream().forEach((hm) -> {
             res.add(hm.diagrama);
         });
@@ -145,7 +145,7 @@ public class Historico {
         return res;
     }
 
-    public boolean removeDiagrama(Diagrama mo, Diagrama noLugar) {
+    public boolean removeDiagrama(Diagram mo, Diagram noLugar) {
         listaDiagramas = null;
 
         HistDiagrama hm = getByDiagrama(mo);
@@ -159,17 +159,17 @@ public class Historico {
         return re;
     }
 
-    public void add(Diagrama mo) {
+    public void add(Diagram mo) {
         listaDiagramas = null;
         lista.add(new HistDiagrama(mo));
     }
 
-    public void add(Diagrama mo, int index) {
+    public void add(Diagram mo, int index) {
         listaDiagramas = null;
         lista.add(index, new HistDiagrama(mo));
     }
 
-    public Diagrama desfazer(Diagrama diagramaAtual) {
+    public Diagram desfazer(Diagram diagramaAtual) {
         listaDiagramas = null;
         HistDiagrama hm = updateAtual(diagramaAtual);
         if (hm == null) {
@@ -178,7 +178,7 @@ public class Historico {
         return hm.desfazer();
     }
 
-    public Diagrama refazer(Diagrama diagramaAtual) {
+    public Diagram refazer(Diagram diagramaAtual) {
         listaDiagramas = null;
         HistDiagrama hm = updateAtual(diagramaAtual);
         if (hm == null) {
@@ -187,7 +187,7 @@ public class Historico {
         return hm.refazer();
     }
 
-    public boolean podeDesfazer(Diagrama diagramaAtual) {
+    public boolean podeDesfazer(Diagram diagramaAtual) {
         HistDiagrama hm = updateAtual(diagramaAtual);
         if (hm == null) {
             return false;
@@ -195,7 +195,7 @@ public class Historico {
         return hm.podeDesfazer();
     }
 
-    public boolean podeRefazer(Diagrama diagramaAtual) {
+    public boolean podeRefazer(Diagram diagramaAtual) {
         HistDiagrama hm = updateAtual(diagramaAtual);
         if (hm == null) {
             return false;
@@ -203,7 +203,7 @@ public class Historico {
         return hm.podeRefazer();
     }
 
-    public void append(Diagrama diagramaAtual) {
+    public void append(Diagram diagramaAtual) {
         listaDiagramas = null;
         HistDiagrama hm = updateAtual(diagramaAtual);
         if (hm == null) {

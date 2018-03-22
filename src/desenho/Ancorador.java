@@ -16,7 +16,7 @@
  */
 package desenho;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics2D;
@@ -32,11 +32,11 @@ import java.util.ArrayList;
  */
 public class Ancorador extends FormaElementar{
     
-    public Ancorador(Diagrama master) {
+    public Ancorador(Diagram master) {
         Inicie(master);
     }
     
-    private void Inicie(Diagrama master) {
+    private void Inicie(Diagram master) {
         setMaster(master);
         if (getMaster() != null) {
             InitializeSubItens(master);

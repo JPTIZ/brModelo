@@ -5,7 +5,7 @@
 package desenho.formas;
 
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.apoios.TreeItem;
 import controlador.inspector.InspectorProperty;
 import desenho.linhas.PontoDeLinha;
@@ -41,7 +41,7 @@ public class Desenhador extends Forma implements iBaseDrawer {
 
     private static final long serialVersionUID = -6675432580840672702L;
 
-    public Desenhador(Diagrama diagrama) {
+    public Desenhador(Diagram diagrama) {
         super(diagrama);
     }
     public final int TIPOSETA = 0;
@@ -502,15 +502,15 @@ public class Desenhador extends Forma implements iBaseDrawer {
             InvalidateArea();
         } catch (IOException iOException) {
             InvalidateArea();
-            util.BrLogger.Logger("ERROR_OPEN_FILE_IMG", iOException.getMessage());
+            util.Logger.log("ERROR_OPEN_FILE_IMG", iOException.getMessage());
             return false;
         } catch (Exception e) {
             InvalidateArea();
-            util.BrLogger.Logger("ERROR_OPEN_FILE_IMG", e.getMessage());
+            util.Logger.log("ERROR_OPEN_FILE_IMG", e.getMessage());
             return false;
         }
         if (imagem == null) {
-            util.BrLogger.Logger("ERROR_OPEN_FILE_IMG", "[EMPTY IMG?]", "[]");
+            util.Logger.log("ERROR_OPEN_FILE_IMG", "[EMPTY IMG?]", "[]");
             return false;
         }
         return true;

@@ -16,7 +16,7 @@
  */
 package controlador.conversor;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import diagramas.conceitual.DiagramaConceitual;
 import diagramas.logico.DiagramaLogico;
 import java.awt.event.ActionEvent;
@@ -247,8 +247,8 @@ public class conversorDialogo extends javax.swing.JDialog {
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
-    private Diagrama origem = null;
-    private Diagrama destino = null;
+    private Diagram origem = null;
+    private Diagram destino = null;
 
     public void Inicializar(DiagramaConceitual ori, DiagramaLogico dest, conversorOpcoes opcoes) {
         origem = ori;

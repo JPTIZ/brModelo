@@ -5,7 +5,7 @@
 package desenho.preAnyDiagrama;
 
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.FormaElementar;
 import desenho.formas.Forma;
@@ -23,12 +23,12 @@ public class PreLigacao extends SuperLinha {
     private static final long serialVersionUID = 4654449532952974461L;
 
     // <editor-fold defaultstate="collapsed" desc="Criação">
-    public PreLigacao(Diagrama diagrama) {
+    public PreLigacao(Diagram diagrama) {
         super(diagrama);
         setInteligente(true);
     }
 
-    public PreLigacao(Diagrama diagrama, PreCardinalidade aCard) {
+    public PreLigacao(Diagram diagrama, PreCardinalidade aCard) {
         super(diagrama);
         setInteligente(true);
         InitLCC(aCard);
@@ -42,7 +42,7 @@ public class PreLigacao extends SuperLinha {
 
     //protected boolean cardNome = false;
 
-//    public PreLigacao(Diagrama diagrama, boolean cardNome) {
+//    public PreLigacao(Diagram diagrama, boolean cardNome) {
 //        this(diagrama);
 //        //this.cardNome = cardNome;
 //    }

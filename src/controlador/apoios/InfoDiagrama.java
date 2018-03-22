@@ -4,7 +4,7 @@ package controlador.apoios;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.Forma;
 import java.awt.Font;
@@ -23,7 +23,7 @@ public class InfoDiagrama extends Forma {
 
     private static final long serialVersionUID = 4149452269833523526L;
 
-    public InfoDiagrama(Diagrama modelo) {
+    public InfoDiagrama(Diagram modelo) {
         super(modelo);
         setVisible(false);
         setSelecionavel(false);
@@ -31,7 +31,7 @@ public class InfoDiagrama extends Forma {
         realDiagramaUniversalUnicID = diagramaUniversalUnicID;
     }
 
-    public InfoDiagrama(Diagrama modelo, String texto) {
+    public InfoDiagrama(Diagram modelo, String texto) {
         super(modelo, texto);
         setVisible(false);
         diagramaUniversalUnicID = geraUnicDiagramaID();

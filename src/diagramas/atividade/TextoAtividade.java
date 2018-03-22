@@ -6,7 +6,7 @@
 
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.preAnyDiagrama.PreTextoApenso;
@@ -21,11 +21,11 @@ public class TextoAtividade extends PreTextoApenso {
 
     private static final long serialVersionUID = 1364161501841228409L;
 
-    public TextoAtividade(Diagrama modelo) {
+    public TextoAtividade(Diagram modelo) {
         super(modelo);
     }
 
-    public TextoAtividade(Diagrama modelo, String texto) {
+    public TextoAtividade(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

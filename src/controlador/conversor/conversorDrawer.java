@@ -17,7 +17,7 @@
 package controlador.conversor;
 
 import controlador.BaseControlador;
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.FormaElementar;
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -80,9 +80,9 @@ public class conversorDrawer extends BaseControlador {
 
     private BufferedImage toPaint = null;
 
-    private Diagrama origem = null, destino = null;
+    private Diagram origem = null, destino = null;
 
-    public void setDiagramas(Diagrama origem, Diagrama destino) {
+    public void setDiagramas(Diagram origem, Diagram destino) {
         this.origem = origem;
         this.destino = destino;
     }

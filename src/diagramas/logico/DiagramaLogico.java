@@ -5,7 +5,7 @@
 package diagramas.logico;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.editores.EditorDeCampos;
 import controlador.editores.EditorDeIR;
@@ -28,7 +28,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import principal.Aplicacao;
+import principal.Application;
 import util.BoxingJava;
 import controlador.editores.MostradorDeCodigo;
 
@@ -36,13 +36,13 @@ import controlador.editores.MostradorDeCodigo;
  *
  * @author ccandido
  */
-public class DiagramaLogico extends Diagrama {
+public class DiagramaLogico extends Diagram {
 
     private static final long serialVersionUID = 5042110897774875283L;
 
     public DiagramaLogico(Editor omaster) {
         super(omaster);
-        setTipo(TipoDeDiagrama.tpLogico);
+        setTipo(TipoDeDiagrama.LOGICO);
 
         meusComandos.add(Controler.Comandos.cmdTabela.name());
         meusComandos.add(Controler.Comandos.cmdCampo.name());
@@ -329,28 +329,28 @@ public class DiagramaLogico extends Diagrama {
         menu.removeAll();
         menu.setEnabled(true);
         String tmp = Editor.fromConfiguracao.getValor("Controler.interface.Diagrama.Command.Logico.Org.descricao");
-        Diagrama.AcaoDiagrama ac = new Diagrama.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.Org.img", tmp, COMM_ORG);
+        Diagram.AcaoDiagrama ac = new Diagram.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.Org.img", tmp, COMM_ORG);
         ac.normal = false;
         JMenuItem mi = new JMenuItem(ac);
         mi.setName(tmp);
         menu.add(mi);
 
         tmp = Editor.fromConfiguracao.getValor("Controler.interface.Diagrama.Command.Logico.EdtC.descricao");
-        ac = new Diagrama.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.EdtC.img", tmp, COMM_EDT_CMPS);
+        ac = new Diagram.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.EdtC.img", tmp, COMM_EDT_CMPS);
         ac.normal = false;
         mi = new JMenuItem(ac);
         mi.setName(tmp);
         menu.add(mi);
 
         tmp = Editor.fromConfiguracao.getValor("Controler.interface.Diagrama.Command.Logico.EdtT.descricao");
-        ac = new Diagrama.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.EdtT.img", tmp, COMM_EDT_CMPS_TP);
+        ac = new Diagram.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.EdtT.img", tmp, COMM_EDT_CMPS_TP);
         ac.normal = false;
         mi = new JMenuItem(ac);
         mi.setName(tmp);
         menu.add(mi);
 
         tmp = Editor.fromConfiguracao.getValor("Controler.interface.Diagrama.Command.Logico.converter.descricao");
-        ac = new Diagrama.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.converter.img", tmp, COMM_COV_FISICO);
+        ac = new Diagram.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.converter.img", tmp, COMM_COV_FISICO);
         ac.normal = false;
         mi = new JMenuItem(ac);
         mi.setName(tmp);
@@ -443,15 +443,15 @@ public class DiagramaLogico extends Diagrama {
 
     public void LancarEditorDeCampos() {
         if (getListaDeItens().stream().filter(tb -> tb instanceof Tabela).count() == 0) {
-            JOptionPane.showMessageDialog(Aplicacao.fmPrincipal,
+            JOptionPane.showMessageDialog(Application.mainWindow,
                     Editor.fromConfiguracao.getValor("Controler.interface.mensagem.sem_campos"),
                     Editor.fromConfiguracao.getValor("Controler.interface.mensagem.msg02"),
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
-        EditorDeCampos de = new EditorDeCampos(Aplicacao.fmPrincipal, true);
-        de.setLocationRelativeTo(Aplicacao.fmPrincipal);
+        EditorDeCampos de = new EditorDeCampos(Application.mainWindow, true);
+        de.setLocationRelativeTo(Application.mainWindow);
         de.Inicie(this);
         de.setVisible(true);
         PerformInspector();
@@ -459,7 +459,7 @@ public class DiagramaLogico extends Diagrama {
 
     public void LancarEditorDeIR(int Tag) {
         if (getListaDeItens().stream().filter(tb -> tb instanceof Tabela).count() == 0) {
-            JOptionPane.showMessageDialog(Aplicacao.fmPrincipal,
+            JOptionPane.showMessageDialog(Application.mainWindow,
                     Editor.fromConfiguracao.getValor("Controler.interface.mensagem.sem_campos"),
                     Editor.fromConfiguracao.getValor("Controler.interface.mensagem.msg02"),
                     JOptionPane.INFORMATION_MESSAGE);
@@ -467,20 +467,20 @@ public class DiagramaLogico extends Diagrama {
         }
         switch (Tag) {
             case Constraint.TAG_COMMAND_PK:
-                EditorDeIR de = new EditorDeIR(Aplicacao.fmPrincipal, true);
-                de.setLocationRelativeTo(Aplicacao.fmPrincipal);
+                EditorDeIR de = new EditorDeIR(Application.mainWindow, true);
+                de.setLocationRelativeTo(Application.mainWindow);
                 de.Inicie(this);
                 de.setVisible(true);
                 break;
             case Constraint.TAG_COMMAND_UN:
-                EditorDeIrUnique un = new EditorDeIrUnique(Aplicacao.fmPrincipal, true);
-                un.setLocationRelativeTo(Aplicacao.fmPrincipal);
+                EditorDeIrUnique un = new EditorDeIrUnique(Application.mainWindow, true);
+                un.setLocationRelativeTo(Application.mainWindow);
                 un.Inicie(this);
                 un.setVisible(true);
                 break;
             case Constraint.TAG_COMMAND_FK:
-                EditorDeIrFK fk = new EditorDeIrFK(Aplicacao.fmPrincipal, true);
-                fk.setLocationRelativeTo(Aplicacao.fmPrincipal);
+                EditorDeIrFK fk = new EditorDeIrFK(Application.mainWindow, true);
+                fk.setLocationRelativeTo(Application.mainWindow);
                 fk.Inicie(this);
                 fk.setVisible(true);
                 break;
@@ -490,13 +490,13 @@ public class DiagramaLogico extends Diagrama {
     }
 
     public boolean ConverterParaFisico() {
-        //util.Dialogos.ShowMessageInform(Aplicacao.fmPrincipal.getRootPane(), "Em construção!");
+        //util.Dialogos.ShowMessageInform(Application.mainWindow.getRootPane(), "Em construção!");
 
         boolean vai = true;
         for (Tabela t : getListaDeTabelas()) {
             if (t.getCampos().stream().anyMatch(cc -> cc.getTipo().isEmpty())) {
-                EditorDeTipos edt = new EditorDeTipos((Frame) (Aplicacao.fmPrincipal.getRootPane()).getParent(), true);
-                edt.setLocationRelativeTo(Aplicacao.fmPrincipal.getRootPane());
+                EditorDeTipos edt = new EditorDeTipos((Frame) (Application.mainWindow.getRootPane()).getParent(), true);
+                edt.setLocationRelativeTo(Application.mainWindow.getRootPane());
                 edt.Inicie(this);
                 edt.setVisible(true);
                 vai = edt.getResultado() == JOptionPane.OK_OPTION;
@@ -518,8 +518,8 @@ public class DiagramaLogico extends Diagrama {
         tabelas.forEach(t -> {
             t.DDLGenerate(ddl, t.DDL_PEGAR_INTEGRIDADE_FK);
         });
-        MostradorDeCodigo edt = new MostradorDeCodigo((Frame) (Aplicacao.fmPrincipal.getRootPane()).getParent(), true);
-        edt.setLocationRelativeTo(Aplicacao.fmPrincipal.getRootPane());
+        MostradorDeCodigo edt = new MostradorDeCodigo((Frame) (Application.mainWindow.getRootPane()).getParent(), true);
+        edt.setLocationRelativeTo(Application.mainWindow.getRootPane());
         edt.setTexto(ddl.stream().map(s -> "\n" + s).reduce(tmp, String::concat));
         edt.setVisible(true);
         return true;
@@ -649,15 +649,15 @@ public class DiagramaLogico extends Diagrama {
 
     public void LancarEditorDeCamposTP() {
         if (getListaDeItens().stream().filter(tb -> tb instanceof Tabela).count() == 0) {
-            JOptionPane.showMessageDialog(Aplicacao.fmPrincipal,
+            JOptionPane.showMessageDialog(Application.mainWindow,
                     Editor.fromConfiguracao.getValor("Controler.interface.mensagem.sem_campos"),
                     Editor.fromConfiguracao.getValor("Controler.interface.mensagem.msg02"),
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
-        EditorDeTipos de = new EditorDeTipos(Aplicacao.fmPrincipal, true);
-        de.setLocationRelativeTo(Aplicacao.fmPrincipal);
+        EditorDeTipos de = new EditorDeTipos(Application.mainWindow, true);
+        de.setLocationRelativeTo(Application.mainWindow);
         de.Inicie(this);
         de.SelecioneByDiagramaSelecionado();
         de.setVisible(true);

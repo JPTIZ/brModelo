@@ -150,14 +150,14 @@ public class Impressor extends BaseControlador {
         repaint();
     }
 
-    private Diagrama diagrama = null;
+    private Diagram diagrama = null;
     public final util.PrintControler Impressora = new PrintControler();
 
-    public Diagrama getDiagrama() {
+    public Diagram getDiagrama() {
         return diagrama;
     }
 
-    public void setDiagrama(Diagrama diagrama) {
+    public void setDiagrama(Diagram diagrama) {
         this.diagrama = diagrama;
         CalculePagina();
         repaint();

@@ -6,7 +6,7 @@
 
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import diagramas.atividade.SetaAtividade;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -23,13 +23,13 @@ public class PreTextoApenso extends PreTexto{
 
     private static final long serialVersionUID = 6920592210168176051L;
 
-    public PreTextoApenso(Diagrama modelo) {
+    public PreTextoApenso(Diagram modelo) {
         super(modelo);
         AceitaAjusteAutmatico = false;
         //setTextoSimples(false);
     }
 
-    public PreTextoApenso(Diagrama modelo, String texto) {
+    public PreTextoApenso(Diagram modelo, String texto) {
         super(modelo, texto);
         AceitaAjusteAutmatico = false;
         //setTextoSimples(false);

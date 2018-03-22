@@ -6,7 +6,7 @@
 
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Composite;
@@ -22,12 +22,12 @@ public class LivreSuperTexto extends LivreBase {
 
     private static final long serialVersionUID = 5883576226863251810L;
     
-    public LivreSuperTexto(Diagrama modelo) {
+    public LivreSuperTexto(Diagram modelo) {
         super(modelo);
         setTipoDesenho(LivreBase.TipoDraw.tpTexto);
     }
 
-    public LivreSuperTexto(Diagrama modelo, String texto) {
+    public LivreSuperTexto(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipoDesenho(LivreBase.TipoDraw.tpTexto);
     }

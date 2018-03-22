@@ -4,7 +4,7 @@
  */
 package desenho.preDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import java.awt.Color;
 import java.awt.Composite;
@@ -31,12 +31,12 @@ public class baseDrawer extends baseDrawerFromForma implements iBaseDrawer {
 
     private static final long serialVersionUID = -5417641185054502949L;
 
-    public baseDrawer(Diagrama diagrama, String texto) {
+    public baseDrawer(Diagram diagrama, String texto) {
         super(diagrama, texto);
         Inicie();
     }
 
-    public baseDrawer(Diagrama diagrama) {
+    public baseDrawer(Diagram diagrama) {
         super(diagrama);
         Inicie();
     }

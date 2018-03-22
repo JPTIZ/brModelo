@@ -61,7 +61,7 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 import javax.swing.KeyStroke;
-import principal.Aplicacao;
+import principal.Application;
 import util.CopFormatacao;
 
 /**
@@ -70,7 +70,7 @@ import util.CopFormatacao;
  */
 public class Editor extends BaseControlador implements KeyListener {
 
-    public Diagrama diagramaAtual;
+    public Diagram diagramaAtual;
     private Selecionador multSel = null;
     public static final Configuer fromConfiguracao = new Configuer();
 
@@ -325,7 +325,7 @@ public class Editor extends BaseControlador implements KeyListener {
             PreInicieAutoSave(tmp);
 
         } catch (NumberFormatException e) {
-            util.BrLogger.Logger("ERROR_LOAD_CFGFILE", e.getMessage());
+            util.Logger.log("ERROR_LOAD_CFGFILE", e.getMessage());
         }
     }
 
@@ -345,14 +345,14 @@ public class Editor extends BaseControlador implements KeyListener {
         box.setPreferredSize(box.getSize());
     }
 
-    private ISuperControler FramePrincipal;
+    private ISuperControler MainWindow;
 
-    public ISuperControler getFramePrincipal() {
-        return FramePrincipal;
+    public ISuperControler getMainWindow() {
+        return MainWindow;
     }
 
-    public void setFramePrincipal(ISuperControler FramePrincipal) {
-        this.FramePrincipal = FramePrincipal;
+    public void setMainWindow(ISuperControler MainWindow) {
+        this.MainWindow = MainWindow;
     }
 
     //<editor-fold defaultstate="collapsed" desc="Teclas">
@@ -499,19 +499,19 @@ public class Editor extends BaseControlador implements KeyListener {
     private boolean showGrid = false;
     private int gridWidth = 20;
 
-    private Diagrama.TipoDeDiagrama tipoDefault = Diagrama.TipoDeDiagrama.tpEap;
+    private Diagram.TipoDeDiagrama tipoDefault = Diagram.TipoDeDiagrama.EAP;
 
-    public Diagrama.TipoDeDiagrama getTipoDefault() {
+    public Diagram.TipoDeDiagrama getTipoDefault() {
         return tipoDefault;
     }
 
-    public void setTipoDefault(Diagrama.TipoDeDiagrama tipoDefault) {
+    public void setTipoDefault(Diagram.TipoDeDiagrama tipoDefault) {
         this.tipoDefault = tipoDefault;
     }
 
     public void setTipoDefaultInt(int tipoDefault) {
-        if (tipoDefault < Diagrama.TipoDeDiagrama.values().length && tipoDefault > -1) {
-            this.tipoDefault = Diagrama.TipoDeDiagrama.values()[tipoDefault];
+        if (tipoDefault < Diagram.TipoDeDiagrama.values().length && tipoDefault > -1) {
+            this.tipoDefault = Diagram.TipoDeDiagrama.values()[tipoDefault];
         }
     }
 
@@ -575,7 +575,7 @@ public class Editor extends BaseControlador implements KeyListener {
         res.add(InspectorProperty.PropertyFactorySN("cfg.mostrardimensoesaomover", "setMostrarDimensoesAoMover", isMostrarDimensoesAoMover()));
 
         ArrayList<String> dias = new ArrayList<>();
-        for (Diagrama.TipoDeDiagrama tp : Diagrama.TipoDeDiagrama.values()) {
+        for (Diagram.TipoDeDiagrama tp : Diagram.TipoDeDiagrama.values()) {
             String tmp = Editor.fromConfiguracao.getValor("Inspector.lst.tipodiagrama." + tp.name().substring(2).toLowerCase());
             dias.add(tmp);
         }
@@ -655,7 +655,7 @@ public class Editor extends BaseControlador implements KeyListener {
             PerformInspectorCfg();
 
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            util.BrLogger.Logger("ERROR_SET_PROPERTY", e.getMessage());
+            util.Logger.log("ERROR_SET_PROPERTY", e.getMessage());
             return false;
         }
         return true;
@@ -765,7 +765,7 @@ public class Editor extends BaseControlador implements KeyListener {
         //só atualiza o Treeview se houver alterado a quantidade de elementos 
         if (tl != lastTreeCount) {
             lastTreeCount = tl;
-            FramePrincipal.DoComandoExterno(Controler.menuComandos.cmdTreeNavegador);
+            MainWindow.DoComandoExterno(Controler.menuComandos.cmdTreeNavegador);
         }
     }
 
@@ -812,7 +812,7 @@ public class Editor extends BaseControlador implements KeyListener {
 
     public boolean IsOpen(File arq) {
         String tmp = arq.getAbsolutePath();
-        for (Diagrama d : getDiagramas()) {
+        for (Diagram d : getDiagramas()) {
             if (d.getArquivo().equals(tmp)) {
                 setSelected(d);
                 JOptionPane.showMessageDialog(getParent(), Editor.fromConfiguracao.getValor("Controler.interface.mensagem.msg01"), Editor.fromConfiguracao.getValor("Controler.interface.mensagem.msg02"), JOptionPane.INFORMATION_MESSAGE);
@@ -892,10 +892,10 @@ public class Editor extends BaseControlador implements KeyListener {
      *
      * @param Diagrama
      */
-    private void ChecarArquivosBiAbertos(Diagrama diag) {
+    private void ChecarArquivosBiAbertos(Diagram diag) {
         getDiagramas().stream().filter(d -> !d.getArquivo().isEmpty() && d != diag).forEach(d -> {
             if (d.getArquivo().equals(diag.getArquivo())) {
-                util.BrLogger.Logger("ERRO_SAME_FILE", " (" + d.getNome() + ")", null);
+                util.Logger.log("ERRO_SAME_FILE", " (" + d.getNome() + ")", null);
             }
         });
     }
@@ -944,13 +944,13 @@ public class Editor extends BaseControlador implements KeyListener {
                 switch (cmd) {
                     case cmdRendo:
                         if (!refazer()) {
-                            util.BrLogger.Logger("ERROR_CMD_RENDO", null);
+                            util.Logger.log("ERROR_CMD_RENDO", null);
                         }
                         controler.makeEnableComands();
                         break;
                     case cmdUndo:
                         if (!desfazer()) {
-                            util.BrLogger.Logger("ERROR_CMD_UNDO", null);
+                            util.Logger.log("ERROR_CMD_UNDO", null);
                         }
                         controler.makeEnableComands();
                         break;
@@ -1069,13 +1069,13 @@ public class Editor extends BaseControlador implements KeyListener {
                         break;
 
                     case cmdSave:
-                        diagramaAtual.Salvar(diagramaAtual.getArquivo());
+                        diagramaAtual.save(diagramaAtual.getArquivo());
                         RePopuleBarraDiagramas(false);
                         controler.makeEnableComands();
                         ChecarArquivosBiAbertos(diagramaAtual);
                         break;
                     case cmdSaveAs:
-                        diagramaAtual.Salvar();
+                        diagramaAtual.save();
                         RePopuleBarraDiagramas(false);
                         controler.makeEnableComands();
                         ChecarArquivosBiAbertos(diagramaAtual);
@@ -1083,7 +1083,7 @@ public class Editor extends BaseControlador implements KeyListener {
 
                     case cmdSaveAll:
                         getDiagramas().stream().forEach(d -> {
-                            d.Salvar(d.getArquivo());
+                            d.save(d.getArquivo());
                         });
                         getDiagramas().stream().forEach(d -> {
                             ChecarArquivosBiAbertos(d);
@@ -1111,10 +1111,10 @@ public class Editor extends BaseControlador implements KeyListener {
                         ChecarArquivosBiAbertos(diagramaAtual);
                         break;
                     case cmdPrint:
-                        FramePrincipal.DoComandoExterno(cmd);
+                        MainWindow.DoComandoExterno(cmd);
                         break;
                     case cmdClose:
-                        Diagrama afechar = diagramaAtual;
+                        Diagram afechar = diagramaAtual;
                         int idx = getDiagramas().indexOf(afechar) + 1;
                         int tam = getDiagramas().size();
                         //if (tam == 1) idx = -1;
@@ -1122,7 +1122,7 @@ public class Editor extends BaseControlador implements KeyListener {
                             idx -= 2;
                         }
                         if (idx > -1) {
-                            Diagrama nv = getDiagramas().get(idx);
+                            Diagram nv = getDiagramas().get(idx);
                             if (FechaDiagrama(afechar, nv)) {
                                 diagramaAtual = nv;
                                 prepareDiagramaAtual();
@@ -1150,17 +1150,17 @@ public class Editor extends BaseControlador implements KeyListener {
                         getDicas().setTexto(cmd.toString());
                 }
             } catch (Exception e) {
-                util.BrLogger.Logger("ERROR_CMD_INVALID", ev.getActionCommand(), e.getMessage());
+                util.Logger.log("ERROR_CMD_INVALID", ev.getActionCommand(), e.getMessage());
             }
         }
     }
 
     private void AbrirDiagramaFromFile(File arq) {
-        Diagrama res = Diagrama.LoadFromFile(arq, this);
+        Diagram res = Diagram.LoadFromFile(arq, this);
         ProcessePosOpen(res);
     }
 
-    private void ProcessePosOpen(Diagrama res) {
+    private void ProcessePosOpen(Diagram res) {
         if (res != null) {
             res.setMaster(this);
             int idx = -1;
@@ -1208,7 +1208,7 @@ public class Editor extends BaseControlador implements KeyListener {
         setTextoDica(null, "");
         getInspectorEditor().Carrege(itemSel.GenerateFullProperty());
         EditoresRefresh(itemSel);
-        FramePrincipal.DoComandoExterno(Controler.menuComandos.cmdTreeSelect);
+        MainWindow.DoComandoExterno(Controler.menuComandos.cmdTreeSelect);
     }
 
     public boolean AceitaEdicao(Inspector origem, InspectorProperty propriedade, String valor) {
@@ -1318,37 +1318,37 @@ public class Editor extends BaseControlador implements KeyListener {
 
     public final void Add(String pa) {
         ArrayList<String> lst = new ArrayList<>();
-        for (Diagrama.TipoDeDiagrama tp : Diagrama.TipoDeDiagrama.values()) {
+        for (Diagram.TipoDeDiagrama tp : Diagram.TipoDeDiagrama.values()) {
             lst.add(tp.name());
         }
         int res = lst.indexOf(pa);
         if (res == -1) {
             return;
         }
-        diagramaAtual = Novo(Diagrama.TipoDeDiagrama.values()[res]);  //new Diagrama(this);
+        diagramaAtual = Novo(Diagram.TipoDeDiagrama.values()[res]);  //new Diagram(this);
         prepareDiagramaAtual();
         historicos.add(diagramaAtual);
     }
 
-    public final Diagrama Add() {
+    public final Diagram Add() {
         diagramaAtual = Novo(null);
         prepareDiagramaAtual();
         historicos.add(diagramaAtual);
         return diagramaAtual;
     }
 
-    public Diagrama AddAsAtual(String strTipo) {
+    public Diagram AddAsAtual(String strTipo) {
         Add(strTipo);
         RePopuleBarraDiagramas(true);
         return diagramaAtual;
     }
 
-    public Diagrama Novo(Diagrama.TipoDeDiagrama tipo) {
+    public Diagram Novo(Diagram.TipoDeDiagrama tipo) {
         //lembrando que sempre deve haver um diagrama aberto.
         if (tipo == null) {
             tipo = getTipoDefault();//Default!!!
         }
-        return Diagrama.Factory(tipo, this);
+        return Diagram.Factory(tipo, this);
     }
 
     private transient boolean scrolling = false;
@@ -1373,7 +1373,7 @@ public class Editor extends BaseControlador implements KeyListener {
     }
 
     /**
-     * Atualiza a camada de apresentação da aplicação a pedido do Diagrama.
+     * Atualiza a camada de apresentação da aplicação a pedido do Diagram.
      */
     //<editor-fold defaultstate="collapsed" desc="Histórico">
     public void DoDiagramaMuda() {
@@ -1419,14 +1419,14 @@ public class Editor extends BaseControlador implements KeyListener {
             }
 
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_PREPARE", e.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_PREPARE", e.getMessage());
         }
     }
 
     private final Historico historicos = new Historico(this);
 
     public boolean desfazer() {
-        Diagrama res = historicos.desfazer(diagramaAtual);
+        Diagram res = historicos.desfazer(diagramaAtual);
         if (res != null) {
             double z = diagramaAtual.getZoom();
             diagramaAtual = res;
@@ -1438,7 +1438,7 @@ public class Editor extends BaseControlador implements KeyListener {
     }
 
     public boolean refazer() {
-        Diagrama res = historicos.refazer(diagramaAtual);
+        Diagram res = historicos.refazer(diagramaAtual);
         if (res != null) {
             double z = diagramaAtual.getZoom();
             diagramaAtual = res;
@@ -1491,13 +1491,13 @@ public class Editor extends BaseControlador implements KeyListener {
                     if (res == null) {
                         return true; //não é erro, foi cancelado pelo usuário.
                     }
-                    getFramePrincipal().Super_Esperando();
+                    getMainWindow().Super_Esperando();
                     if (((desenho.formas.Desenhador) diagramaAtual.getSelecionado()).LoadImageFromFile(res)) {
-                        getFramePrincipal().Super_Pronto();
+                        getMainWindow().Super_Pronto();
                         PerformInspectorFor(diagramaAtual.getSelecionado());
                         return true;
                     }
-                    getFramePrincipal().Super_Pronto();
+                    getMainWindow().Super_Pronto();
                     PerformInspectorFor(diagramaAtual.getSelecionado());
                     //return false;
                 }
@@ -1591,19 +1591,19 @@ public class Editor extends BaseControlador implements KeyListener {
     }
 
     private void EditorBaseDrawerCarregue(FormaElementar selecionado) {
-        DrawerEditor de = new DrawerEditor(Aplicacao.fmPrincipal, true);
-        de.setLocationRelativeTo(Aplicacao.fmPrincipal);
+        DrawerEditor de = new DrawerEditor(Application.mainWindow, true);
+        de.setLocationRelativeTo(Application.mainWindow);
         de.Inicie(selecionado);
         de.setVisible(true);
     }
 
-    private boolean FechaDiagrama(Diagrama afechar, Diagrama noLugar) {
+    private boolean FechaDiagrama(Diagram afechar, Diagram noLugar) {
         boolean needProcAutoSave = true;
         if (afechar.getMudou()) {
             afechar.ClearSelect(true);
             int res = util.Dialogos.ShowMessageSave(afechar);
             if (res == JOptionPane.OK_OPTION) {
-                if (!afechar.Salvar(afechar.getArquivo())) {
+                if (!afechar.save(afechar.getArquivo())) {
                     return false;
                 }
                 needProcAutoSave = false;
@@ -1623,7 +1623,7 @@ public class Editor extends BaseControlador implements KeyListener {
     }
 
     public void FechaDiagrama(int idx) {
-        Diagrama afechar = getDiagramas().get(idx);
+        Diagram afechar = getDiagramas().get(idx);
         if (afechar == diagramaAtual) {
             idx++;
         }
@@ -1634,7 +1634,7 @@ public class Editor extends BaseControlador implements KeyListener {
             idx -= 2;
         }
         if (idx > -1) {
-            Diagrama nv = getDiagramas().get(idx);
+            Diagram nv = getDiagramas().get(idx);
             if (afechar != diagramaAtual) {
                 nv = diagramaAtual;
             }
@@ -1649,7 +1649,7 @@ public class Editor extends BaseControlador implements KeyListener {
         RePopuleBarraDiagramas(true);
     }
 
-    public ArrayList<Diagrama> getDiagramas() {
+    public ArrayList<Diagram> getDiagramas() {
         return historicos.getDiagramas();
     }
 
@@ -1669,13 +1669,13 @@ public class Editor extends BaseControlador implements KeyListener {
         prepareDiagramaAtual();
     }
 
-    public void setSelected(Diagrama diag) {
+    public void setSelected(Diagram diag) {
         int i = getDiagramas().indexOf(diag);
         showDiagramas.setSelectedIndex(i);
         AtiveDiagrama(i);
     }
 
-    public void NomeieDiagrama(Diagrama diag) {
+    public void NomeieDiagrama(Diagram diag) {
         if (diag == null) {
             return;
         }
@@ -1697,7 +1697,7 @@ public class Editor extends BaseControlador implements KeyListener {
         DoAutoSaveCompleto();
     }
 
-    //<editor-fold defaultstate="collapsed" desc="Auto Salvar">
+    //<editor-fold defaultstate="collapsed" desc="Auto save">
     //private final HashMap<String, byte[]> autoSave = new HashMap<>();
     private final ArrayList<byte[]> autoSave = new ArrayList<>();
     private boolean autoSaveAtivo = false;
@@ -1776,7 +1776,7 @@ public class Editor extends BaseControlador implements KeyListener {
         doneAutoSave = true;
         autoSave.clear();
         getDiagramas().stream().filter((d) -> (d.getMudou())).forEach((d) -> {
-            d.AutoSalvar(autoSave);
+            d.autosave(autoSave);
         });
         return AutoSalveToFile();
     }
@@ -1789,7 +1789,7 @@ public class Editor extends BaseControlador implements KeyListener {
                 return true;
             }
         } catch (IOException iOException) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_AUTOSAVE_WIRTE", iOException.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_AUTOSAVE_WIRTE", iOException.getMessage());
             return false;
         }
     }
@@ -1806,7 +1806,7 @@ public class Editor extends BaseControlador implements KeyListener {
     }
 
     /**
-     * Após salvar ou fechar um diagrama, ele deve ser removido do arquivo de auto-save.
+     * Após save ou fechar um diagrama, ele deve ser removido do arquivo de auto-save.
      */
     public void DoAutoSaveCompleto() {
         if (autoSaveIniciado) {
@@ -1896,11 +1896,11 @@ public class Editor extends BaseControlador implements KeyListener {
                             ObjectInputStream inb = new ObjectInputStream(new ByteArrayInputStream(k));
                             GuardaPadraoBrM seguranca = (GuardaPadraoBrM) inb.readObject();
                             inb.close();
-                            Diagrama res = Diagrama.LoadFromBrm(seguranca, this);
+                            Diagram res = Diagram.LoadFromBrm(seguranca, this);
                             ProcessePosOpen(res);
                             res.setMudou(true);
                         } catch (NullPointerException | IOException | ClassNotFoundException iOException) {
-                            util.BrLogger.Logger("ERROR_DIAGRAMA_AUTOSAVE_LOAD", "STREAM LENGTH: " + String.valueOf(k.length), iOException.getMessage());
+                            util.Logger.log("ERROR_DIAGRAMA_AUTOSAVE_LOAD", "STREAM LENGTH: " + String.valueOf(k.length), iOException.getMessage());
                         }
                     });
                     in.close();
@@ -1911,7 +1911,7 @@ public class Editor extends BaseControlador implements KeyListener {
                 }
             }
         } catch (NullPointerException | IOException | ClassNotFoundException iOException) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_AUTOSAVE_LOAD", iOException.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_AUTOSAVE_LOAD", iOException.getMessage());
         }
         return false;
     }

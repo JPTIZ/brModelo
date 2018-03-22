@@ -4,7 +4,7 @@
  */
 package diagramas.logico;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.preAnyDiagrama.PreCardinalidade;
 import java.util.ArrayList;
@@ -19,12 +19,12 @@ public class LogicoCardinalidade  extends PreCardinalidade {
 
     private static final long serialVersionUID = 1456264234125393022L;
 
-    public LogicoCardinalidade(Diagrama modelo) {
+    public LogicoCardinalidade(Diagram modelo) {
         super(modelo);
         setCanBeDeleted(false);
     }
     
-    public LogicoCardinalidade(Diagrama modelo, String texto) {
+    public LogicoCardinalidade(Diagram modelo, String texto) {
         super(modelo, texto);
         setCanBeDeleted(false);
     }

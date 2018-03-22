@@ -4,7 +4,7 @@
  */
 package desenho.formas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.linhas.PontoDeLinha;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -22,11 +22,11 @@ public class FormaNaoRetangularBase extends Forma {
 
     private static final long serialVersionUID = 8190306678762122439L;
 
-    public FormaNaoRetangularBase(Diagrama modelo) {
+    public FormaNaoRetangularBase(Diagram modelo) {
         super(modelo);
     }
 
-    public FormaNaoRetangularBase(Diagrama modelo, String texto) {
+    public FormaNaoRetangularBase(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

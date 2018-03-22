@@ -338,15 +338,15 @@ public class baseDrawerItem implements Serializable, IObjetoPintavel {
             dono.InvalidateArea();
         } catch (IOException iOException) {
             dono.InvalidateArea();
-            util.BrLogger.Logger("ERROR_OPEN_FILE_IMG", iOException.getMessage());
+            util.Logger.log("ERROR_OPEN_FILE_IMG", iOException.getMessage());
             return false;
         } catch (Exception e) {
             dono.InvalidateArea();
-            util.BrLogger.Logger("ERROR_OPEN_FILE_IMG", e.getMessage());
+            util.Logger.log("ERROR_OPEN_FILE_IMG", e.getMessage());
             return false;
         }
         if (imagem == null) {
-            util.BrLogger.Logger("ERROR_OPEN_FILE_IMG", "[EMPTY IMG?]", "[]");
+            util.Logger.log("ERROR_OPEN_FILE_IMG", "[EMPTY IMG?]", "[]");
             return false;
         }
         return true;

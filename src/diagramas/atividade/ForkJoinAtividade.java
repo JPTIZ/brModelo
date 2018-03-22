@@ -5,7 +5,7 @@
  */
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.FormaRetangular;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -18,13 +18,13 @@ public class ForkJoinAtividade extends FormaRetangular {
 
     private static final long serialVersionUID = 8001639822305503977L;
 
-    public ForkJoinAtividade(Diagrama modelo) {
+    public ForkJoinAtividade(Diagram modelo) {
         super(modelo);
         editFonte = false;
 
     }
 
-    public ForkJoinAtividade(Diagrama modelo, String texto) {
+    public ForkJoinAtividade(Diagram modelo, String texto) {
         super(modelo, texto);
         editFonte = false;
     }

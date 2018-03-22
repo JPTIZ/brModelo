@@ -5,7 +5,7 @@
  */
 package principal;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Point;
 import javax.swing.JFrame;
 import javax.swing.SpinnerNumberModel;
@@ -35,7 +35,7 @@ public class fmImpressao extends javax.swing.JDialog {
         spinL.setModel(model);
     }
 
-    public void setDiagrama(Diagrama d) {
+    public void setDiagrama(Diagram d) {
         prnView.setDiagrama(d);
         AtualizePaginas();
     }

@@ -102,8 +102,8 @@ public class FrameSobre extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     void Inicie(ParteAjuda sel) {
-        this.setTitle(sel.getTitulo());
-        if (sel.getByteImage() != null || sel.getHtml() != null) {//.isEmpty()) {
+        this.setTitle(sel.getTitle());
+        if (sel.getRawImage() != null || sel.getHtml() != null) {//.isEmpty()) {
             Pan.removeAll();
             int H = 0;
             int W = 0;
@@ -126,8 +126,8 @@ public class FrameSobre extends javax.swing.JDialog {
                 H = d.height + 10;
                 W = d.width;
             }
-            if (sel.getByteImage() != null) {
-                ImageIcon img = new ImageIcon(sel.getByteImage());
+            if (sel.getRawImage() != null) {
+                ImageIcon img = new ImageIcon(sel.getRawImage());
                 JLabel picLabel = new JLabel(img);
                 W = W > img.getIconWidth() ? W : img.getIconWidth();
                 picLabel.setBounds(0, H, img.getIconWidth(), img.getIconHeight());

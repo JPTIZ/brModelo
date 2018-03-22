@@ -5,7 +5,7 @@
 
 package diagramas.conceitual;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.preAnyDiagrama.PreCardinalidade;
 import java.util.ArrayList;
@@ -20,13 +20,13 @@ public class Cardinalidade extends PreCardinalidade {
 
     private static final long serialVersionUID = -9219630166211153571L;
 
-    public Cardinalidade(Diagrama modelo) {
+    public Cardinalidade(Diagram modelo) {
         super(modelo);
         setCanBeDeleted(false);
         nodic = false;
     }
 
-    public Cardinalidade(Diagrama modelo, String texto) {
+    public Cardinalidade(Diagram modelo, String texto) {
         super(modelo, texto);
         setCanBeDeleted(false);
         nodic = false;

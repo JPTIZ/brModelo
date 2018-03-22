@@ -6,7 +6,7 @@
 
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.FormaElementar;
 import desenho.formas.FormaArea;
 import desenho.linhas.PontoDeLinha;
@@ -20,11 +20,11 @@ public class RaiaAtividade extends FormaArea {
 
     private static final long serialVersionUID = 3142806418501291919L;
 
-    public RaiaAtividade(Diagrama modelo) {
+    public RaiaAtividade(Diagram modelo) {
         super(modelo);
     }
 
-    public RaiaAtividade(Diagrama modelo, String texto) {
+    public RaiaAtividade(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

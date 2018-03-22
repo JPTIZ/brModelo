@@ -5,7 +5,7 @@
 
 package desenho.formas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -19,11 +19,11 @@ public class FormaRetangular extends Forma {
 
     private static final long serialVersionUID = -9002399542594756137L;
 
-    public FormaRetangular(Diagrama modelo) {
+    public FormaRetangular(Diagram modelo) {
         super(modelo);
     }
 
-    public FormaRetangular(Diagrama modelo, String texto) {
+    public FormaRetangular(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

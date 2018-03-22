@@ -6,7 +6,7 @@
 
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.FormaCircular;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
@@ -19,11 +19,11 @@ public class EstadoAtividade extends FormaCircular{
 
     private static final long serialVersionUID = -3283778296478726591L;
 
-    public EstadoAtividade(Diagrama modelo) {
+    public EstadoAtividade(Diagram modelo) {
         super(modelo);
     }
 
-    public EstadoAtividade(Diagrama modelo, String texto) {
+    public EstadoAtividade(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

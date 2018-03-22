@@ -4,7 +4,7 @@
  */
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.FormaTextoBase;
 import desenho.linhas.SuperLinha;
 import java.awt.AlphaComposite;
@@ -29,12 +29,12 @@ public class PreTexto extends FormaTextoBase {
 
     private boolean autosize = false;
 
-    public PreTexto(Diagrama modelo) {
+    public PreTexto(Diagram modelo) {
         super(modelo);
         Init();
     }
 
-    public PreTexto(Diagrama modelo, String texto) {
+    public PreTexto(Diagram modelo, String texto) {
         super(modelo, texto);
         titulo = getTexto();
         Init();

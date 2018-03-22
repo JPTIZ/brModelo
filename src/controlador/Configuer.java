@@ -65,7 +65,7 @@ public class Configuer {
                     }
                 }
             } catch (Exception e) {
-                util.BrLogger.Logger("ERROR_LOAD_CFGFILE", e.getMessage());
+                util.Logger.log("ERROR_LOAD_CFGFILE", e.getMessage());
                 SaveCfg();
             }
         }
@@ -120,7 +120,7 @@ public class Configuer {
                 prop.store(cfgFile, "Config");
             }
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_SAVE_CFGFILE", e.getMessage());
+            util.Logger.log("ERROR_SAVE_CFGFILE", e.getMessage());
         }
     }
     

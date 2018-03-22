@@ -854,7 +854,7 @@ public class Constraint implements Serializable {
             }
             return ((Tabela) e).getConstraints().get(Integer.valueOf(cods[1].trim()));
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_DIAGRAMA_LOAD", e.getMessage());
+            util.Logger.log("ERROR_DIAGRAMA_LOAD", e.getMessage());
             return null;
         }
     }

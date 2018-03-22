@@ -6,7 +6,7 @@
 
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.FormaNaoRetangularDisformeBase;
 
 /**
@@ -17,11 +17,11 @@ public class FluxFormaBaseComplementar extends FormaNaoRetangularDisformeBase {
 
     private static final long serialVersionUID = 6541937677078308606L;
 
-    public FluxFormaBaseComplementar(Diagrama modelo) {
+    public FluxFormaBaseComplementar(Diagram modelo) {
         super(modelo);
     }
 
-    public FluxFormaBaseComplementar(Diagrama modelo, String texto) {
+    public FluxFormaBaseComplementar(Diagram modelo, String texto) {
         super(modelo, texto);
     }
     

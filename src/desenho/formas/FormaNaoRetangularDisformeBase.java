@@ -5,7 +5,7 @@
  */
 package desenho.formas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.linhas.PontoDeLinha;
 import java.awt.Color;
@@ -23,13 +23,13 @@ public class FormaNaoRetangularDisformeBase extends FormaNaoRetangularBase {
 
     private static final long serialVersionUID = 4979116307999403371L;
 
-    public FormaNaoRetangularDisformeBase(Diagrama modelo) {
+    public FormaNaoRetangularDisformeBase(Diagram modelo) {
         super(modelo);
         setTipo(TipoDePontos.tp4Pontos);
 
     }
 
-    public FormaNaoRetangularDisformeBase(Diagrama modelo, String texto) {
+    public FormaNaoRetangularDisformeBase(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipo(TipoDePontos.tp4Pontos);
     }

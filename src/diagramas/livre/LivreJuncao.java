@@ -5,7 +5,7 @@
  */
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.linhas.PontoDeLinha;
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
@@ -23,7 +23,7 @@ public class LivreJuncao extends LivreBase {
 
     private static final long serialVersionUID = -6937144218354697754L;
 
-    public LivreJuncao(Diagrama modelo, String texto) {
+    public LivreJuncao(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipoDesenho(LivreBase.TipoDraw.tpCirculo);
         setDashed(true);
@@ -31,7 +31,7 @@ public class LivreJuncao extends LivreBase {
         noNewProperty = true;
     }
 
-    public LivreJuncao(Diagrama modelo) {
+    public LivreJuncao(Diagram modelo) {
         super(modelo);
         setTipoDesenho(LivreBase.TipoDraw.tpCirculo);
         setDashed(true);

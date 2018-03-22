@@ -6,7 +6,7 @@ package diagramas.conceitual;
 
 import controlador.Controler;
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.Ancorador;
 import desenho.linhas.PontoDeLinha;
@@ -26,13 +26,13 @@ public class Atributo extends PreAtributo {
 
     private static final long serialVersionUID = -5223581706365131753L;
 
-    public Atributo(Diagrama modelo) {
+    public Atributo(Diagram modelo) {
         super(modelo);
         nodic = false;
         getAncorasCode().add(Ancorador.CODE_ORG_AT);
     }
 
-    public Atributo(Diagrama modelo, String texto) {
+    public Atributo(Diagram modelo, String texto) {
         super(modelo, texto);
         nodic = false;
         getAncorasCode().add(Ancorador.CODE_ORG_AT);
@@ -211,10 +211,10 @@ public class Atributo extends PreAtributo {
         try {
             valor = Integer.valueOf(vl);
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_SET_CARD", e.getMessage());
+            util.Logger.log("ERROR_SET_CARD", e.getMessage());
         }
         if (valor < -1) {
-            util.BrLogger.Logger("ERROR_SET_CARD", "INVALID!");
+            util.Logger.log("ERROR_SET_CARD", "INVALID!");
             valor = -1;
         }
         if (max) {

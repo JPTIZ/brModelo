@@ -6,7 +6,7 @@
 
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.preAnyDiagrama.PreLigacaoSetaComApenso;
 import desenho.preAnyDiagrama.PreTextoApenso;
 import java.awt.Point;
@@ -21,7 +21,7 @@ public class FluxSeta extends PreLigacaoSetaComApenso {
 
     private static final long serialVersionUID = -2743241381072752114L;
 
-    public FluxSeta(Diagrama diagrama) {
+    public FluxSeta(Diagram diagrama) {
         super(diagrama);
     }
     

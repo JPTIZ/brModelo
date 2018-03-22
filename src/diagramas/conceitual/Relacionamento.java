@@ -4,7 +4,7 @@
  */
 package diagramas.conceitual;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.preAnyDiagrama.PreRelacionamento;
 import java.awt.Rectangle;
@@ -18,12 +18,12 @@ public class Relacionamento extends PreRelacionamento {
 
     private static final long serialVersionUID = 260085365330070656L;
 
-    public Relacionamento(Diagrama modelo) {
+    public Relacionamento(Diagram modelo) {
         super(modelo);
         nodic = false;
     }
 
-    public Relacionamento(Diagrama modelo, String texto) {
+    public Relacionamento(Diagram modelo, String texto) {
         super(modelo, texto);
         nodic = false;
     }

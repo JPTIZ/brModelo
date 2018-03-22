@@ -16,7 +16,7 @@
  */
 package partepronta;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -281,11 +281,11 @@ public class FormPartes extends javax.swing.JFrame {
     private void btnEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdtActionPerformed
         ParteBtn btn = getBtnSelecionado();
         if (btn != null) {
-            String txt = util.Dialogos.ShowDlgInputText(this.getRootPane(), btn.Parte.getTitulo());
+            String txt = util.Dialogos.ShowDlgInputText(this.getRootPane(), btn.Parte.getTitle());
             if (!"".equals(txt)) {
-                Partes.Edit(btn.Parte, txt);
+                Partes.edit(btn.Parte, txt);
                 btn.setText(txt);
-                menuSalvar.setEnabled(Partes.isMudou());
+                menuSalvar.setEnabled(Partes.hasChanged());
             }
         }
 
@@ -294,14 +294,14 @@ public class FormPartes extends javax.swing.JFrame {
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
         ParteBtn btn = getBtnSelecionado();
         if (btn != null) {
-            GerenciadorSubParte sb = btn.Parte;
-            int idx = Partes.getLista().indexOf(sb);
+            SubpartManager sb = btn.Parte;
+            int idx = Partes.getSubparts().indexOf(sb);
 
             if (util.Dialogos.ShowMessageConfirm(this.getRootPane(), "") == JOptionPane.YES_OPTION) {
-                Partes.Remova(sb);
+                Partes.remove(sb);
                 Barra.removeAll();
                 HabiliteBtns(-1);
-                Partes.getLista().stream().filter(e -> e.getTipoDeDiagrama() == TipoDeDiagrama).forEach(pa -> criaBtn(pa));
+                Partes.getSubparts().stream().filter(e -> e.getDiagramType() == TipoDeDiagrama).forEach(pa -> criaBtn(pa));
                 Pan.removeAll();
                 Pan.revalidate();
                 Pan.repaint();
@@ -313,7 +313,7 @@ public class FormPartes extends javax.swing.JFrame {
                     btn = ((ParteBtn) Barra.getComponent(idx));
                     btn.doClick();
                 }
-                menuSalvar.setEnabled(Partes.isMudou());
+                menuSalvar.setEnabled(Partes.hasChanged());
             }
         }
     }//GEN-LAST:event_btnDelActionPerformed
@@ -331,14 +331,14 @@ public class FormPartes extends javax.swing.JFrame {
     private void btnUPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUPActionPerformed
         ParteBtn btn = getBtnSelecionado();
         if (btn != null) {
-            GerenciadorSubParte sb = btn.Parte;
-            int idx = Partes.getLista().indexOf(sb);
+            SubpartManager sb = btn.Parte;
+            int idx = Partes.getSubparts().indexOf(sb);
             if (idx > 0) {
-                Partes.Remova(sb);
-                Partes.getLista().add(idx - 1, sb);
+                Partes.remove(sb);
+                Partes.getSubparts().add(idx - 1, sb);
 
                 Barra.removeAll();
-                Partes.getLista().stream().filter(e -> e.getTipoDeDiagrama().equals(TipoDeDiagrama)).forEach(pa -> criaBtn(pa));
+                Partes.getSubparts().stream().filter(e -> e.getDiagramType().equals(TipoDeDiagrama)).forEach(pa -> criaBtn(pa));
 
                 ParteBtn btn2 = ((ParteBtn) Barra.getComponent(idx - 1));
                 Barra.repaint();
@@ -354,14 +354,14 @@ public class FormPartes extends javax.swing.JFrame {
     private void btnDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDownActionPerformed
         ParteBtn btn = getBtnSelecionado();
         if (btn != null) {
-            GerenciadorSubParte sb = btn.Parte;
-            int idx = Partes.getLista().indexOf(sb);
+            SubpartManager sb = btn.Parte;
+            int idx = Partes.getSubparts().indexOf(sb);
             if (idx < Barra.getComponentCount() - 1) {
-                Partes.Remova(sb);
-                Partes.getLista().add(idx + 1, sb);
+                Partes.remove(sb);
+                Partes.getSubparts().add(idx + 1, sb);
 
                 Barra.removeAll();
-                Partes.getLista().stream().filter(e -> e.getTipoDeDiagrama().equals(TipoDeDiagrama)).forEach(pa -> criaBtn(pa));
+                Partes.getSubparts().stream().filter(e -> e.getDiagramType().equals(TipoDeDiagrama)).forEach(pa -> criaBtn(pa));
                 btn = ((ParteBtn) Barra.getComponent(idx + 1));
                 Barra.repaint();
                 btn.doClick();
@@ -374,7 +374,7 @@ public class FormPartes extends javax.swing.JFrame {
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
         ParteBtn btn = getBtnSelecionado();
         if (btn != null) {
-            GerenciadorSubParte sb = btn.Parte;
+            SubpartManager sb = btn.Parte;
             if (!Mananger.diagramaAtual.doPaste(sb.getXMLCopiado())) {
                 util.Dialogos.ShowMessageERROR(this, Editor.fromConfiguracao.getValor("Controler.MSG_ERRO_PASTE"));
             } else {
@@ -426,16 +426,16 @@ public class FormPartes extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuSalvar;
     // End of variables declaration//GEN-END:variables
 
-    public GerenciadorPartes Partes = new GerenciadorPartes();
+    public PartsManager Partes = new PartsManager();
 
-    public void NovoBotao(String texto, Diagrama diag) {
-        GerenciadorSubParte sp = Partes.Add(texto, diag);
+    public void NovoBotao(String texto, Diagram diag) {
+        SubpartManager sp = Partes.add(texto, diag);
         ParteBtn btn = criaBtn(sp);
         btn.doClick();
     }
 
-    private ParteBtn criaBtn(GerenciadorSubParte sp) {
-        String texto = sp.getTitulo();
+    private ParteBtn criaBtn(SubpartManager sp) {
+        String texto = sp.getTitle();
         ParteBtn btn = new ParteBtn(texto);
         btn.setFocusable(false);
         btn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -445,8 +445,8 @@ public class FormPartes extends javax.swing.JFrame {
         Barra.add(btn);
         btn.setSelected(true);
         btn.addActionListener((ActionEvent e) -> {
-            GerenciadorSubParte sp1 = ((ParteBtn) e.getSource()).Parte;
-            ImageIcon img = new ImageIcon(sp1.getByteImage());
+            SubpartManager sp1 = ((ParteBtn) e.getSource()).Parte;
+            ImageIcon img = new ImageIcon(sp1.getRawImage());
             JLabel picLabel = new JLabel(img);
 
             picLabel.setBounds(0, 0, img.getIconWidth(), img.getIconHeight());
@@ -457,7 +457,7 @@ public class FormPartes extends javax.swing.JFrame {
             Pan.add(picLabel);//, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
             Pan.revalidate();
             Pan.repaint();
-            HabiliteBtns(Partes.getLista().indexOf(sp));
+            HabiliteBtns(Partes.getSubparts().indexOf(sp));
         });
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -472,16 +472,16 @@ public class FormPartes extends javax.swing.JFrame {
         return btn;
     }
 
-    public Diagrama.TipoDeDiagrama TipoDeDiagrama = null;
+    public Diagram.TipoDeDiagrama TipoDeDiagrama = null;
 
-    public void Popule(Diagrama.TipoDeDiagrama tp) {
+    public void Popule(Diagram.TipoDeDiagrama tp) {
         if (TipoDeDiagrama == tp) {
             return;
         }
         TipoDeDiagrama = tp;
         Barra.removeAll();
         HabiliteBtns(-1);
-        Partes.getLista().stream().filter(e -> e.getTipoDeDiagrama().equals(tp)).forEach(pa -> criaBtn(pa));
+        Partes.getSubparts().stream().filter(e -> e.getDiagramType().equals(tp)).forEach(pa -> criaBtn(pa));
         Pan.removeAll();
         if (Barra.getComponentCount() > 0) {
             ((ParteBtn) Barra.getComponent(0)).doClick();
@@ -492,14 +492,14 @@ public class FormPartes extends javax.swing.JFrame {
     }
 
     public boolean LoadData() {
-        Partes = GerenciadorPartes.LoadDataTemplate();
+        Partes = PartsManager.loadDataTemplate();
         if (Partes == null) {
-            Partes = new GerenciadorPartes();
-            if (!GerenciadorPartes.SaveDataTemplate(Partes)) {
+            Partes = new PartsManager();
+            if (!PartsManager.saveDataTemplate(Partes)) {
                 Partes = null;
             }
         }
-        menuSalvar.setEnabled(Partes.isMudou());
+        menuSalvar.setEnabled(Partes.hasChanged());
         return (Partes != null);
     }
 
@@ -513,13 +513,13 @@ public class FormPartes extends javax.swing.JFrame {
         btnOK.setEnabled(btnEdt.isEnabled());
         menuEditar.setEnabled(btnEdt.isEnabled());
         menuOK.setEnabled(btnEdt.isEnabled());
-        menuSalvar.setEnabled(Partes.isMudou());
-        externalSalvar.setEnabled(Partes.isMudou());
+        menuSalvar.setEnabled(Partes.hasChanged());
+        externalSalvar.setEnabled(Partes.hasChanged());
     }
 
     public void Salva() {
-        GerenciadorPartes.SaveDataTemplate(Partes);
-        menuSalvar.setEnabled(Partes.isMudou());
-        externalSalvar.setEnabled(Partes.isMudou());
+        PartsManager.saveDataTemplate(Partes);
+        menuSalvar.setEnabled(Partes.hasChanged());
+        externalSalvar.setEnabled(Partes.hasChanged());
     }
 }

@@ -16,7 +16,7 @@
  */
 package helper;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.apoios.TreeItem;
 import desenho.FormaElementar;
@@ -40,7 +40,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
-import principal.FramePrincipal;
+import principal.MainWindow;
 import util.ItemIntStringToList;
 
 /**
@@ -738,7 +738,7 @@ public class FormHelp extends javax.swing.JFrame {
             return;
         }
 
-        v.setTitulo(edtTitulo.getText());
+        v.setTitle(edtTitulo.getText());
         if (!editorHtml.getText().equals(RepositorioHtml.generateHtml())) {
             v.setHtml(editorHtml.getText());
         }
@@ -919,7 +919,7 @@ public class FormHelp extends javax.swing.JFrame {
         for (int i = 0; i < panNav.getComponentCount(); i++) {
             LabelNav ln = (LabelNav) panNav.getComponent(i);
             ParteAjuda it = nav.get(i);
-            String ps = LabelNav.textoFormatado(it.getTitulo());
+            String ps = LabelNav.textoFormatado(it.getTitle());
             ps = "<" + ps + (btnEditar.isSelected() ? " (ID: " + String.valueOf(it.getID()) + ")" : "") + ">";
             ln.setText(ps);
         }
@@ -943,9 +943,9 @@ public class FormHelp extends javax.swing.JFrame {
         }
         AjudaMng.ProcurarPorTexto(txtFinder.getText(), achados);
         achados.stream().forEach(a -> {
-            ItemIntStringToList toa = new ItemIntStringToList(a.getID(), a.getTitulo(), a);
+            ItemIntStringToList toa = new ItemIntStringToList(a.getID(), a.getTitle(), a);
             encontrados.add(toa);
-            lst.addElement(a.getTitulo());
+            lst.addElement(a.getTitle());
         });
     }//GEN-LAST:event_btnFinderActionPerformed
 
@@ -996,7 +996,7 @@ public class FormHelp extends javax.swing.JFrame {
         if (v == null) {
             return;
         }
-        fmp.getEditor().AddAsAtual(v.getTipoDeDiagrama().name());
+        fmp.getEditor().AddAsAtual(v.getDiagramType().name());
         if (!fmp.getEditor().diagramaAtual.doPaste(v.getXMLCopiado())) {
             util.Dialogos.ShowMessageERROR(this, Editor.fromConfiguracao.getValor("Controler.MSG_ERRO_PASTE"));
         }
@@ -1010,16 +1010,16 @@ public class FormHelp extends javax.swing.JFrame {
         if (emEdicao(v)) {
             btnOKActionPerformed(null);
         }
-        String XMLCopiado = Diagrama.SaveToXml(fmp.getEditor().diagramaAtual, false);
+        String XMLCopiado = Diagram.saveToXml(fmp.getEditor().diagramaAtual, false);
         String versaoDiagrama = fmp.getEditor().diagramaAtual.getVersao();
-        Diagrama.TipoDeDiagrama tipo = fmp.getEditor().diagramaAtual.getTipo();
+        Diagram.TipoDeDiagrama tipo = fmp.getEditor().diagramaAtual.getTipo();
 
         v.InitParteAjuda(ImagemFull(), XMLCopiado, versaoDiagrama, tipo);
         DoMuda(true);
         populeEditor(v);
     }//GEN-LAST:event_btnFromDiagActionPerformed
 
-    public FramePrincipal fmp = null;
+    public MainWindow fmp = null;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Pan;
@@ -1093,7 +1093,7 @@ public class FormHelp extends javax.swing.JFrame {
 
     //<editor-fold defaultstate="collapsed" desc="Ultil">
     public byte[] ImagemFull() {
-        Diagrama diagramaAtual = fmp.getEditor().diagramaAtual;
+        Diagram diagramaAtual = fmp.getEditor().diagramaAtual;
         final int borda = 2;
         Point p2 = diagramaAtual.getPontoExtremo();
         int minX = p2.x;
@@ -1186,7 +1186,7 @@ public class FormHelp extends javax.swing.JFrame {
     private boolean disableEv = false;
 
     private TreeItem PopuleTree() {
-        final TreeItem tree = new TreeItem(AjudaMng.getTitulo(), 0, "");
+        final TreeItem tree = new TreeItem(AjudaMng.getTitle(), 0, "");
         disableEv = true;
         topicos.clear();
         encontrados.clear();
@@ -1277,11 +1277,11 @@ public class FormHelp extends javax.swing.JFrame {
             DefaultListModel lst = new DefaultListModel();
             sel.getLinks().forEach(ls -> {
                 ParteAjuda pa = AjudaMng.findByID(ls);
-                lst.addElement(pa.getTitulo());
+                lst.addElement(pa.getTitle());
             });
             lstLinks.setModel(lst);
             txtEditor.setText(sel.getXMLCopiado());
-            edtTitulo.setText(sel.getTitulo());
+            edtTitulo.setText(sel.getTitle());
             comboTopicosAlterar.setSelectedItem(topicos.stream().filter(tp -> tp.getTag() == sel.getSuperior()).findAny().orElse(null));
             if (!sel.getHtml().isEmpty()) {
                 editorHtml.setText(sel.getHtml());
@@ -1290,7 +1290,7 @@ public class FormHelp extends javax.swing.JFrame {
             }
             btnToDiag.setEnabled(!sel.getXMLCopiado().isEmpty());
         }
-        if (sel.getByteImage() != null || sel.getHtml() != null || !sel.getLinks().isEmpty()) {//.isEmpty()) {
+        if (sel.getRawImage() != null || sel.getHtml() != null || !sel.getLinks().isEmpty()) {//.isEmpty()) {
             Pan.removeAll();
             int H = 0;
             int W = 0;
@@ -1304,8 +1304,8 @@ public class FormHelp extends javax.swing.JFrame {
                 H = d.height + 10;
                 W = d.width;
             }
-            if (sel.getByteImage() != null) {
-                ImageIcon img = new ImageIcon(sel.getByteImage());
+            if (sel.getRawImage() != null) {
+                ImageIcon img = new ImageIcon(sel.getRawImage());
                 JLabel picLabel = new JLabel(img);
                 W = W > img.getIconWidth() ? W : img.getIconWidth();
                 picLabel.setBounds(0, H, img.getIconWidth(), img.getIconHeight());
@@ -1318,7 +1318,7 @@ public class FormHelp extends javax.swing.JFrame {
                 int tl = 1;
                 for (Integer sl : sel.getLinks()) {
                     ParteAjuda lo = AjudaMng.findByID(sl);
-                    String ps = String.valueOf(tl) + ". " + lo.getTitulo();
+                    String ps = String.valueOf(tl) + ". " + lo.getTitle();
                     tl++;
                     LabelNav lb = new LabelNav(ps);
                     lb.setId(lo.getID());
@@ -1363,7 +1363,7 @@ public class FormHelp extends javax.swing.JFrame {
         if (!btnEditar.isSelected()) {
             return false;
         }
-        boolean sn = !iap.getTitulo().equals(edtTitulo.getText())
+        boolean sn = !iap.getTitle().equals(edtTitulo.getText())
                 || !iap.getXMLCopiado().equals(txtEditor.getText());
         if (sn || oslinks.size() != iap.getLinks().size()) {
             return true;

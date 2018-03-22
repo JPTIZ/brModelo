@@ -4,7 +4,7 @@
  */
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.CubicCurve2D;
@@ -18,11 +18,11 @@ public class FluxNota extends FluxFormaBaseComplementar {
 
     private static final long serialVersionUID = -7379680056945455946L;
 
-    public FluxNota(Diagrama modelo, String texto) {
+    public FluxNota(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 
-    public FluxNota(Diagrama modelo) {
+    public FluxNota(Diagram modelo) {
         super(modelo);
     }
 

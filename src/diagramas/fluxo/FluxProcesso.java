@@ -6,7 +6,7 @@
 
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
 
@@ -18,11 +18,11 @@ public class FluxProcesso extends FluxFormaBaseComplementar {
 
     private static final long serialVersionUID = 4191424730638062945L;
 
-    public FluxProcesso(Diagrama modelo) {
+    public FluxProcesso(Diagram modelo) {
         super(modelo);
     }
 
-    public FluxProcesso(Diagrama modelo, String texto) {
+    public FluxProcesso(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

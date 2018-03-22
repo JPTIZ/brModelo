@@ -4,7 +4,7 @@
  */
 package diagramas.conceitual;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.preAnyDiagrama.PreEntidade;
 
 /**
@@ -15,12 +15,12 @@ public class Entidade extends PreEntidade {
 
     private static final long serialVersionUID = -7107006599560243972L;
 
-    public Entidade(Diagrama modelo) {
+    public Entidade(Diagram modelo) {
         super(modelo);
         nodic = false;
     }
 
-    public Entidade(Diagrama modelo, String texto) {
+    public Entidade(Diagram modelo, String texto) {
         super(modelo, texto);
         nodic = false;
     }

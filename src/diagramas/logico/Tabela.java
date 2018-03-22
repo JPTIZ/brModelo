@@ -4,7 +4,7 @@
  */
 package diagramas.logico;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.ElementarEvento;
@@ -33,7 +33,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import principal.Aplicacao;
+import principal.Application;
 import util.Constantes;
 import util.DesenhadorDeTexto;
 
@@ -45,12 +45,12 @@ public class Tabela extends baseDrawerFromForma {
 
     private static final long serialVersionUID = -8275314691624584199L;
 
-    public Tabela(Diagrama modelo, String texto) {
+    public Tabela(Diagram modelo, String texto) {
         super(modelo, texto);
         Inicie();
     }
 
-    public Tabela(Diagrama modelo) {
+    public Tabela(Diagram modelo) {
         super(modelo);
         Inicie();
     }
@@ -1175,7 +1175,7 @@ public class Tabela extends baseDrawerFromForma {
         ArrayList<String> ddl = new ArrayList<>();
         DDLGenerate(ddl, DDL_PEGAR_TUDO);
         String tmp = "/* brModelo: */\n";
-        util.Dialogos.ShowDlgTextoReadOnly(Aplicacao.fmPrincipal.getRootPane(), ddl.stream().map(s -> "\n" + s).reduce(tmp, String::concat));
+        util.Dialogos.ShowDlgTextoReadOnly(Application.mainWindow.getRootPane(), ddl.stream().map(s -> "\n" + s).reduce(tmp, String::concat));
     }
 
     public void ProcesseIrKey(Campo cmp) {

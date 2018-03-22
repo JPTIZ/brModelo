@@ -5,7 +5,7 @@
 package desenho.formas;
 
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.linhas.PontoDeLinha;
 import java.awt.AlphaComposite;
@@ -33,7 +33,7 @@ public class Legenda extends Forma {
 
     private static final long serialVersionUID = -706529994751090967L;
 
-    public Legenda(Diagrama modelo) {
+    public Legenda(Diagram modelo) {
         super(modelo);
         //setForeColorWithOutRepaint(Color.LIGHT_GRAY);
         SetTexto(Editor.fromConfiguracao.getValor("diagrama.Legenda"));

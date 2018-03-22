@@ -50,7 +50,7 @@ public class Mostrador extends BaseControlador {
         setTableVisible(selectedIndex);
     }
 
-    public ArrayList<Diagrama> getDiagramas() {
+    public ArrayList<Diagram> getDiagramas() {
             if (master != null) {
                 return master.getDiagramas();
             }
@@ -84,7 +84,7 @@ public class Mostrador extends BaseControlador {
         int y = 0;
 
         int sx = scroll;
-        for (Diagrama m : getDiagramas()) {
+        for (Diagram m : getDiagramas()) {
             areas.add(new Rectangle(sx, y, larg, getHeight() - y));
             sx += larg + dist;
         }
@@ -130,7 +130,7 @@ public class Mostrador extends BaseControlador {
         int imgw = 16 + 2 + 4;
         int i = 1;
         int txL = (getHeight() / 2) + (fh / 2);
-        for (Diagrama m : getDiagramas()) {
+        for (Diagram m : getDiagramas()) {
             i++; // i = 2.
             g2.setColor(Color.gray);
             //g2.fill(r);

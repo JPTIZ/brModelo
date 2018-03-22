@@ -5,7 +5,7 @@
  */
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 
 /**
  *
@@ -15,12 +15,12 @@ public class LivreComentario extends LivreBase {
 
     private static final long serialVersionUID = -2762375162776817796L;
 
-    public LivreComentario(Diagrama modelo, String texto) {
+    public LivreComentario(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipoDesenho(LivreBase.TipoDraw.tpComentario);
     }
 
-    public LivreComentario(Diagrama modelo) {
+    public LivreComentario(Diagram modelo) {
         super(modelo);
         setTipoDesenho(LivreBase.TipoDraw.tpComentario);
     }

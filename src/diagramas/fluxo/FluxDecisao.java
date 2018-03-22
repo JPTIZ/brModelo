@@ -6,7 +6,7 @@
 
 package diagramas.fluxo;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
@@ -19,12 +19,12 @@ public class FluxDecisao extends FluxFormaBaseComplementar {
 
     private static final long serialVersionUID = 7228459112937871606L;
 
-    public FluxDecisao(Diagrama modelo) {
+    public FluxDecisao(Diagram modelo) {
         super(modelo);
         setMudarParaTextoLongo(false);
     }
 
-    public FluxDecisao(Diagrama modelo, String texto) {
+    public FluxDecisao(Diagram modelo, String texto) {
         super(modelo, texto);
         setMudarParaTextoLongo(false);
     }

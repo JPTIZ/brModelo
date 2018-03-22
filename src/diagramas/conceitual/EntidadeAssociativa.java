@@ -5,7 +5,7 @@
 
 package diagramas.conceitual;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.FormaElementar;
@@ -27,17 +27,17 @@ public class EntidadeAssociativa extends PreEntidadeAssociativa {
 
     private static final long serialVersionUID = 7518332308924246293L;
 
-    public EntidadeAssociativa(Diagrama modelo) {
+    public EntidadeAssociativa(Diagram modelo) {
         super(modelo);
         nodic = false;
     }
 
-    public EntidadeAssociativa(Diagrama modelo, String texto) {
+    public EntidadeAssociativa(Diagram modelo, String texto) {
         super(modelo, texto);
         nodic = false;
     }
 
-    public EntidadeAssociativa(Diagrama modelo, String texto, Relacionamento fr) {
+    public EntidadeAssociativa(Diagram modelo, String texto, Relacionamento fr) {
         super(modelo, texto, fr);
         nodic = false;
     }

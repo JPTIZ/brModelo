@@ -4,7 +4,7 @@
  */
 package desenho.linhas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.inspector.InspectorProperty;
 import desenho.Elementar;
 import desenho.FormaElementar;
@@ -31,7 +31,7 @@ public class SuperLinha extends Linha {
 
     private static final long serialVersionUID = -6648325468968978514L;
 
-    public SuperLinha(Diagrama master) {
+    public SuperLinha(Diagram master) {
         super(master);
     }
     private boolean inteligente = false;

@@ -6,7 +6,7 @@
 
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.Forma;
 import desenho.formas.FormaLosangular;
 import desenho.linhas.Linha;
@@ -20,12 +20,12 @@ public class DecisaoAtividade extends FormaLosangular{
 
     private static final long serialVersionUID = 3967982872321626365L;
 
-    public DecisaoAtividade(Diagrama modelo) {
+    public DecisaoAtividade(Diagram modelo) {
         super(modelo);
         editFonte = false;
     }
 
-    public DecisaoAtividade(Diagrama modelo, String texto) {
+    public DecisaoAtividade(Diagram modelo, String texto) {
         super(modelo, texto);
         editFonte = false;
     }

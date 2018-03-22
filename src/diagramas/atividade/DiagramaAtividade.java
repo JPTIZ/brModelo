@@ -6,7 +6,7 @@
 package diagramas.atividade;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import desenho.Elementar;
 import desenho.FormaElementar;
@@ -21,13 +21,13 @@ import java.awt.Rectangle;
  *
  * @author ccandido
  */
-public class DiagramaAtividade extends Diagrama {
+public class DiagramaAtividade extends Diagram {
 
     private static final long serialVersionUID = -4112112303506516169L;
 
     public DiagramaAtividade(Editor omaster) {
         super(omaster);
-        setTipo(TipoDeDiagrama.tpAtividade);
+        setTipo(TipoDeDiagrama.ATIVIDADE);
 
         meusComandos.add(Controler.Comandos.cmdInicioAtividade.name());
         meusComandos.add(Controler.Comandos.cmdEstadoAtividade.name());
@@ -162,7 +162,7 @@ public class DiagramaAtividade extends Diagrama {
 //        HashMap<Element, FormaElementar> link = new HashMap<>();
 //
 //        try {
-//            NodeList nodeLst = doc.getElementsByTagName(Diagrama.nodePrincipal);
+//            NodeList nodeLst = doc.getElementsByTagName(Diagram.nodePrincipal);
 //            Node mer = nodeLst.item(0);
 //            nodeLst = mer.getChildNodes();
 //            if (colando) {

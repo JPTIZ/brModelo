@@ -87,7 +87,7 @@ public class TratadorDeImagens {
             }
             return new ImageIcon(img);
         } catch (Exception e) {
-            util.BrLogger.Logger("ERROR_LOAD_ICON", e.getMessage());
+            util.Logger.log("ERROR_LOAD_ICON", e.getMessage());
         }
         return null;
     }
@@ -99,7 +99,7 @@ public class TratadorDeImagens {
                 return im;
             }
         } catch (IOException e) {
-            util.BrLogger.Logger("ERROR_IMG_FROMBYTES", e.getMessage());
+            util.Logger.log("ERROR_IMG_FROMBYTES", e.getMessage());
         }
         return null;
     }
@@ -111,7 +111,7 @@ public class TratadorDeImagens {
             try {
                 ImageIO.write(image, "png", baos);
             } catch (IOException e) {
-                util.BrLogger.Logger("ERROR_IMG_TOBYTES", e.getMessage());
+                util.Logger.log("ERROR_IMG_TOBYTES", e.getMessage());
             }
             byte[] b = baos.toByteArray();
             return b;

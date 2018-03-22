@@ -189,7 +189,7 @@ public class QuadroDeEdicao extends BaseControlador {
         this.master = master;
     }
 
-    public Diagrama getDiagramaAtual() {
+    public Diagram getDiagramaAtual() {
         if (master == null) {
             return null;
         }

@@ -6,7 +6,7 @@
 
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -18,11 +18,11 @@ public class FimAtividade extends PreIniFimAtiv{
 
     private static final long serialVersionUID = -209450608909519046L;
 
-    public FimAtividade(Diagrama modelo) {
+    public FimAtividade(Diagram modelo) {
         super(modelo);
     }
 
-    public FimAtividade(Diagrama modelo, String texto) {
+    public FimAtividade(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

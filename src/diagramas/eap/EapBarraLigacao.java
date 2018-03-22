@@ -6,7 +6,7 @@
 package diagramas.eap;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.Forma;
@@ -32,12 +32,12 @@ public class EapBarraLigacao extends Forma {
 
     private static final long serialVersionUID = 1939864565434922497L;
 
-    public EapBarraLigacao(Diagrama modelo) {
+    public EapBarraLigacao(Diagram modelo) {
         super(modelo);
         editFonte = false;
     }
 
-    public EapBarraLigacao(Diagrama modelo, String texto) {
+    public EapBarraLigacao(Diagram modelo, String texto) {
         super(modelo, texto);
         editFonte = false;
     }

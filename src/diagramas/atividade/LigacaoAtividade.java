@@ -6,7 +6,7 @@
 
 package diagramas.atividade;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.preAnyDiagrama.PreLigacaoSeta;
 
 /**
@@ -17,7 +17,7 @@ public class LigacaoAtividade extends PreLigacaoSeta{
 
     private static final long serialVersionUID = -621549876042127360L;
 
-    public LigacaoAtividade(Diagrama diagrama) {
+    public LigacaoAtividade(Diagram diagrama) {
         super(diagrama);
     }
 }

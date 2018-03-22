@@ -59,5 +59,5 @@ public class ParteBtn extends JToggleButton {
         super(string, icon, bln);
     }
 
-    public GerenciadorSubParte Parte = null;
+    public SubpartManager Parte = null;
 }

@@ -4,7 +4,7 @@
  */
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.formas.Forma;
 import desenho.formas.FormaTriangular;
 import desenho.linhas.Linha;
@@ -29,11 +29,11 @@ public class PreEspecializacao extends FormaTriangular {
 
     private static final long serialVersionUID = 4701897775925018386L;
 
-    public PreEspecializacao(Diagrama modelo) {
+    public PreEspecializacao(Diagram modelo) {
         super(modelo);
     }
 
-    public PreEspecializacao(Diagrama modelo, String texto) {
+    public PreEspecializacao(Diagram modelo, String texto) {
         super(modelo, texto);
     }
 

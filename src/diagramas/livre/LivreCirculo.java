@@ -6,7 +6,7 @@
 
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 
 /**
  *
@@ -16,12 +16,12 @@ public class LivreCirculo extends LivreBase {
 
     private static final long serialVersionUID = -4320967864621147459L;
 
-    public LivreCirculo(Diagrama modelo, String texto) {
+    public LivreCirculo(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipoDesenho(LivreBase.TipoDraw.tpCirculo);
     }
 
-    public LivreCirculo(Diagrama modelo) {
+    public LivreCirculo(Diagram modelo) {
         super(modelo);
         setTipoDesenho(LivreBase.TipoDraw.tpCirculo);
     }

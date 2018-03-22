@@ -5,7 +5,7 @@
 package desenho.preDiagrama;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.formas.Forma;
@@ -29,11 +29,11 @@ public class baseDrawerFromForma extends Forma {
 
     private static final long serialVersionUID = 4532072927400419827L;
 
-    public baseDrawerFromForma(Diagrama diagrama) {
+    public baseDrawerFromForma(Diagram diagrama) {
         super(diagrama);
     }
 
-    public baseDrawerFromForma(Diagrama diagrama, String texto) {
+    public baseDrawerFromForma(Diagram diagrama, String texto) {
         super(diagrama, texto);
     }
     public int margemTitulo = 10;

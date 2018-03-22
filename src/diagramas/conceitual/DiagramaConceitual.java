@@ -6,7 +6,7 @@ package diagramas.conceitual;
 
 import controlador.Controler;
 import controlador.Editor;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.conversor.conversorConceitualParaLogico;
 import controlador.editores.EditorDeAtributos;
 import controlador.inspector.InspectorProperty;
@@ -30,20 +30,20 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import principal.Aplicacao;
+import principal.Application;
 import util.BoxingJava;
 
 /**
  *
  * @author ccandido
  */
-public class DiagramaConceitual extends Diagrama {
+public class DiagramaConceitual extends Diagram {
 
     private static final long serialVersionUID = -3835903539927031392L;
 
     public DiagramaConceitual(Editor omaster) {
         super(omaster);
-        setTipo(TipoDeDiagrama.tpConceitual);
+        setTipo(TipoDeDiagrama.CONCEITUAL);
 
         meusComandos.add(Controler.Comandos.cmdEntidade.name());
         meusComandos.add(Controler.Comandos.cmdRelacionamento.name());
@@ -79,14 +79,14 @@ public class DiagramaConceitual extends Diagrama {
         menu.removeAll();
         menu.setEnabled(true);
         String tmp = Editor.fromConfiguracao.getValor("Controler.interface.Diagrama.Command.Conceitual.Conv.descricao");
-        Diagrama.AcaoDiagrama ac = new Diagrama.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Conceitual.Conv.img", tmp, COMM_CONV);
+        Diagram.AcaoDiagrama ac = new Diagram.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Conceitual.Conv.img", tmp, COMM_CONV);
         ac.normal = false;
         JMenuItem mi = new JMenuItem(ac);
         mi.setName(tmp);
         menu.add(mi);
 
         tmp = Editor.fromConfiguracao.getValor("Controler.interface.Diagrama.Command.Logico.EdtA.descricao");
-        ac = new Diagrama.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.EdtA.img", tmp, COMM_EDT_ATTR);
+        ac = new Diagram.AcaoDiagrama(this, tmp, "Controler.interface.Diagrama.Command.Logico.EdtA.img", tmp, COMM_EDT_ATTR);
         ac.normal = false;
         mi = new JMenuItem(ac);
         mi.setName(tmp);
@@ -97,7 +97,7 @@ public class DiagramaConceitual extends Diagrama {
     public void rodaComando(String comm) {
         if (comm.equals(COMM_CONV)) {
             conversorConceitualParaLogico conv = new conversorConceitualParaLogico();
-            getEditor().AddAsAtual(Diagrama.TipoDeDiagrama.tpLogico.name());
+            getEditor().AddAsAtual(Diagram.TipoDeDiagrama.LOGICO.name());
 
             conv.beginConvert(this, (DiagramaLogico) getEditor().diagramaAtual);
         }
@@ -651,15 +651,15 @@ public class DiagramaConceitual extends Diagrama {
 
     public void LancarEditorDeAtributos() {
         if ((getListaDeItens().stream().filter(tb -> tb instanceof PreEntidade).count() == 0)) { // ||  !(getSelecionado() instanceof PreEntidade)) {
-            JOptionPane.showMessageDialog(Aplicacao.fmPrincipal,
+            JOptionPane.showMessageDialog(Application.mainWindow,
                     Editor.fromConfiguracao.getValor("Controler.interface.mensagem.sem_attr"),
                     Editor.fromConfiguracao.getValor("Controler.interface.mensagem.msg02"),
                     JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
-        EditorDeAtributos de = new EditorDeAtributos(Aplicacao.fmPrincipal, true);
-        de.setLocationRelativeTo(Aplicacao.fmPrincipal);
+        EditorDeAtributos de = new EditorDeAtributos(Application.mainWindow, true);
+        de.setLocationRelativeTo(Application.mainWindow);
         de.Inicie(this);
         de.setVisible(true);
         PerformInspector();

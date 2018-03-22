@@ -5,7 +5,7 @@
  */
 package principal.cli;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import desenho.FormaElementar;
 import java.awt.Point;
@@ -431,13 +431,13 @@ public class CliDiagramaProcessador {
         }
     }
 
-    private Diagrama diag = null;
+    private Diagram diag = null;
 
-    public Diagrama getDiag() {
+    public Diagram getDiag() {
         return diag;
     }
 
-    public void setDiag(Diagrama diag) {
+    public void setDiag(Diagram diag) {
         this.diag = diag;
     }
 

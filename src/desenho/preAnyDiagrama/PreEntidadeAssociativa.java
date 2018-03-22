@@ -4,7 +4,7 @@
  */
 package desenho.preAnyDiagrama;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.Elementar;
 import diagramas.conceitual.Relacionamento;
 import java.awt.Graphics2D;
@@ -23,17 +23,17 @@ public class PreEntidadeAssociativa extends PreEntidade {
     private static final long serialVersionUID = 7744242295858549314L;
 
     // <editor-fold defaultstate="collapsed" desc="Criação">
-    public PreEntidadeAssociativa(Diagrama modelo) {
+    public PreEntidadeAssociativa(Diagram modelo) {
         super(modelo);
         Inicie();
     }
 
-    public PreEntidadeAssociativa(Diagrama modelo, String texto) {
+    public PreEntidadeAssociativa(Diagram modelo, String texto) {
         super(modelo, texto);
         Inicie();
     }
 
-    public PreEntidadeAssociativa(Diagrama modelo, String texto, PreRelacionamento fr) {
+    public PreEntidadeAssociativa(Diagram modelo, String texto, PreRelacionamento fr) {
         super(modelo, texto);
         interno = fr;
         Inicie();

@@ -4,7 +4,7 @@
  */
 package desenho.formas;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 
@@ -16,12 +16,12 @@ public class FormaCircular extends FormaNaoRetangularBase {
 
     private static final long serialVersionUID = -452954710335094585L;
 
-    public FormaCircular(Diagrama modelo) {
+    public FormaCircular(Diagram modelo) {
         super(modelo);
         setTipo(TipoDePontos.tp4Pontos);
     }
 
-    public FormaCircular(Diagrama modelo, String texto) {
+    public FormaCircular(Diagram modelo, String texto) {
         super(modelo, texto);
         setTipo(TipoDePontos.tp4Pontos);
     }

@@ -5,7 +5,7 @@
  */
 package diagramas.livre;
 
-import controlador.Diagrama;
+import controlador.Diagram;
 import desenho.preAnyDiagrama.PreLigacaoSeta;
 
 /**
@@ -16,7 +16,7 @@ public class LivreLigacaoSimples extends PreLigacaoSeta {
 
     private static final long serialVersionUID = -9220433713787957517L;
 
-    public LivreLigacaoSimples(Diagrama diagrama) {
+    public LivreLigacaoSimples(Diagram diagrama) {
         super(diagrama);
     }
 

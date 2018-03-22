@@ -6,7 +6,7 @@
 package desenho.formas;
 
 import controlador.Controler;
-import controlador.Diagrama;
+import controlador.Diagram;
 import controlador.Editor;
 import controlador.inspector.InspectorProperty;
 import desenho.ElementarListener;
@@ -40,13 +40,13 @@ public class FormaArea extends Forma {
 
     private static final long serialVersionUID = 4366780837704194852L;
 
-    public FormaArea(Diagrama modelo) {
+    public FormaArea(Diagram modelo) {
         super(modelo);
         areaDefault = Editor.fromConfiguracao.getValor("Inspector.obj.formaarea.area.default");
         //setForeColor(new Color(204,204, 255));
     }
 
-    public FormaArea(Diagrama modelo, String texto) {
+    public FormaArea(Diagram modelo, String texto) {
         super(modelo, texto);
         areaDefault = Editor.fromConfiguracao.getValor("Inspector.obj.formaarea.area.default");
         //setForeColor(new Color(204,204, 255));
@@ -585,7 +585,7 @@ public class FormaArea extends Forma {
         try {
             Remova(getRegioes().get(idx));
         } catch (Exception e) {
-            util.BrLogger.Logger("MSG-EXCLUIR_SUBITEM", e.getMessage());
+            util.Logger.log("MSG-EXCLUIR_SUBITEM", e.getMessage());
         }
     }
 
